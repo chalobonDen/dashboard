@@ -8,7 +8,7 @@
 
         <!-- <div align="right" style="margin-right:18px;"> -->
         <td align="right">
-          <input type="search" name id />
+          <input type="search" name id v-model="search" />
           &nbsp;
           <select style="margin-right:18px; border:none;" name id>
             <option value="all">All</option>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in lists" :key="list.id">
+      <md-card id="card" align="left" v-for="list in listFilter" :key="list.id">
         <table id="listTask">
           <td align="left" style="width:75% ">
             <md-card-header id="title">
@@ -111,6 +111,10 @@ export default {
           status: 'Done',
         },
       ],
+      search: '',
+      name: '',
+      position: '',
+      description: '',
       user: [
         {
           userId: 1,
@@ -119,6 +123,14 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    listFilter() {
+      let text = this.search.trim()
+      return this.lists.filter(item => {
+        return item.name.indexOf(text) > -1
+      })
+    },
   },
 }
 </script>
