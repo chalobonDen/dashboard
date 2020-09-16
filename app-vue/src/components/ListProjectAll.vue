@@ -1,68 +1,78 @@
 <template>
-  <div class="listProject">
-    <table style="width:100%; margin: 0px 18px 0px 18px;">
-      <td align="left">Project</td>
-      <td align="right">
-        <input type="search" name id />
-        <select name="task" id="task" v-model="task">
-          <option value="All">All</option>
-          <option value="WIP">WIP</option>
-          <option value="closed">closed</option>
-        </select>
-      </td>
-    </table>
-    <md-card id="card" align="left" v-for="list in lists" :key="list.id">
-      <table id="listTask">
-        <td align="left" style="width:75% ">
-          <md-card-header id="title">
-            <div class="md-title">
-              <b style="line-height: 0px;">{{list.name}}</b>
-            </div>
-          </md-card-header>
-          <md-card-content id="position">{{list.position}}</md-card-content>
-        </td>
-        <td id="status" align="right">
-          <md-chip
-            class="md-accent"
-            md-clickable
-            v-if="list.status == 'WIP'"
-            style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
-          >
-            <span id="iconStatus" class="iconify" data-inline="false" data-icon="carbon:warning"></span>
-            {{list.status}}
-          </md-chip>
-          <md-chip
-            v-if="list.status == 'Done'"
-            style="background-color:#4DD987; color:black; font-size: 11px; font-weight:500;"
-          >
-            <span
-              id="iconStatus"
-              class="iconify"
-              data-inline="false"
-              data-icon="octicon:check-circle-24"
-            ></span>
-            {{list.status}}
-          </md-chip>
+  <div>
+    <div>
+      <table style="width:100%; margin-bottom:10px">
+        <div style="margin-left:18px">
+          <td align="left" style="font-size:20px; font-weight:550">Project</td>
+        </div>
+
+        <!-- <div align="right" style="margin-right:18px;"> -->
+        <td align="right">
+          <input type="search" name id />
+          &nbsp;
+          <select style="margin-right:18px; border:none;" name id>
+            <option value="all">All</option>
+            <option value="wip">WIP</option>
+            <option value="closed">Closed</option>
+          </select>
         </td>
       </table>
-      <md-card-content style="padding-top: 8px;">
-        <div>{{list.description}}</div>
-        <div style="margin-bottom:18px">
-          <img
-            align="right"
-            src="https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512"
-            style="width:33px; border-radius: 100px; margin-left:4px"
-          />
+    </div>
 
-          <img
-            align="right"
-            src="https://ca.slack-edge.com/T03EKL88Y-U01858A1810-7eaef9c3165e-512"
-            style="width:33px; border-radius: 100px; margin-left:4px"
-          />
-        </div>
-      </md-card-content>
-      {{user.userPic}}
-    </md-card>
+    <div class="listProject">
+      <md-card id="card" align="left" v-for="list in lists" :key="list.id">
+        <table id="listTask">
+          <td align="left" style="width:75% ">
+            <md-card-header id="title">
+              <div class="md-title">
+                <b style="line-height: 0px;">{{list.name}}</b>
+              </div>
+            </md-card-header>
+            <md-card-content id="position">{{list.position}}</md-card-content>
+          </td>
+          <td id="status" align="right">
+            <md-chip
+              class="md-accent"
+              md-clickable
+              v-if="list.status == 'WIP'"
+              style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
+            >
+              <span id="iconStatus" class="iconify" data-inline="false" data-icon="carbon:warning"></span>
+              {{list.status}}
+            </md-chip>
+            <md-chip
+              v-if="list.status == 'Done'"
+              style="background-color:#4DD987; color:black; font-size: 11px; font-weight:500;"
+            >
+              <span
+                id="iconStatus"
+                class="iconify"
+                data-inline="false"
+                data-icon="octicon:check-circle-24"
+              ></span>
+              {{list.status}}
+            </md-chip>
+          </td>
+        </table>
+        <md-card-content style="padding-top: 8px;">
+          <div>{{list.description}}</div>
+          <div style="margin-bottom:18px">
+            <img
+              align="right"
+              src="https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512"
+              style="width:33px; border-radius: 100px; margin-left:4px"
+            />
+
+            <img
+              align="right"
+              src="https://ca.slack-edge.com/T03EKL88Y-U01858A1810-7eaef9c3165e-512"
+              style="width:33px; border-radius: 100px; margin-left:4px"
+            />
+          </div>
+        </md-card-content>
+        {{user.userPic}}
+      </md-card>
+    </div>
   </div>
 </template>
 
@@ -114,12 +124,14 @@ export default {
 </script>
 
 <style  scoped>
+div {
+  font-family: 'Roboto';
+}
 .listProject {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
   padding-top: 15px;
   padding-bottom: 50px;
-  font-family: 'Roboto';
 }
 #listTask {
   border: none;
@@ -160,38 +172,12 @@ export default {
 }
 
 /* search button */
-body {
-  background: #fff;
-  color: #666;
-  font: 90%/180% Arial, Helvetica, sans-serif;
-  width: 800px;
-  max-width: 96%;
-  margin: 0 auto;
-}
-a {
-  color: #69c;
-  text-decoration: none;
-}
-a:hover {
-  color: #f60;
-}
-h1 {
-  font: 1.7em;
-  line-height: 110%;
-  color: #000;
-}
-p {
-  margin: 0 0 20px;
-}
-
 input {
   outline: none;
 }
 input[type='search'] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
-  font-family: inherit;
-  font-size: 100%;
 }
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
@@ -201,8 +187,7 @@ input::-webkit-search-cancel-button {
 input[type='search'] {
   background: url(../assets/carbon_search.svg) no-repeat 9px center;
   border: none;
-  padding: 9px 10px 9px 32px;
-  width: 55px;
+  padding: 2px 10px 2px; /* ขนาดกรอบของปุ่ม search */
 
   -webkit-border-radius: 10em;
   -moz-border-radius: 10em;
@@ -213,7 +198,7 @@ input[type='search'] {
   transition: all 0.5s;
 }
 input[type='search']:focus {
-  width: 130px;
+  /* width: 130px; */
   background-color: #fff;
   border-color: #66cc75;
 
@@ -239,7 +224,7 @@ input[type='search']:hover {
   background-color: #fff;
 }
 input[type='search']:focus {
-  width: 130px;
+  width: 50%; /* ความกว้างเวลาปุ่ม search ขยาย */
   padding-left: 32px;
   color: #000;
   background-color: #fff;
