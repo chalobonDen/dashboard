@@ -1,7 +1,18 @@
 <template>
   <div class="listProject">
+    <table style="width:100%; margin: 0px 18px 0px 18px;">
+      <td align="left">Project</td>
+      <td align="right">
+        <input type="search" name id />
+        <select name="task" id="task" v-model="task">
+          <option value="All">All</option>
+          <option value="WIP">WIP</option>
+          <option value="closed">closed</option>
+        </select>
+      </td>
+    </table>
     <md-card id="card" align="left" v-for="list in lists" :key="list.id">
-      <table>
+      <table id="listTask">
         <td align="left" style="width:75% ">
           <md-card-header id="title">
             <div class="md-title">
@@ -57,7 +68,7 @@
 
 <script>
 export default {
-  name: 'ListProject',
+  name: 'ListProjectAll',
   data() {
     return {
       lists: [
@@ -110,7 +121,7 @@ export default {
   padding-bottom: 50px;
   font-family: 'Roboto';
 }
-table {
+#listTask {
   border: none;
   width: 100%;
   padding-bottom: 0px;
@@ -146,5 +157,98 @@ table {
   font-size: 16px;
   margin-bottom: -1px; /* ระยะห่างระหว่างชื่อโปรเจคกับตำแหน่งงาน */
   line-height: 20px; /* ระยะห่างระหว่างบรรทัดของชื่อโปรเจค เวลาขึ้นบรรทัดใหม่ */
+}
+
+/* search button */
+body {
+  background: #fff;
+  color: #666;
+  font: 90%/180% Arial, Helvetica, sans-serif;
+  width: 800px;
+  max-width: 96%;
+  margin: 0 auto;
+}
+a {
+  color: #69c;
+  text-decoration: none;
+}
+a:hover {
+  color: #f60;
+}
+h1 {
+  font: 1.7em;
+  line-height: 110%;
+  color: #000;
+}
+p {
+  margin: 0 0 20px;
+}
+
+input {
+  outline: none;
+}
+input[type='search'] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+input[type='search'] {
+  background: url(../assets/carbon_search.svg) no-repeat 9px center;
+  border: none;
+  padding: 9px 10px 9px 32px;
+  width: 55px;
+
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  border-radius: 10em;
+
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+input[type='search']:focus {
+  width: 130px;
+  background-color: #fff;
+  border-color: #66cc75;
+
+  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+}
+
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+input[type='search'] {
+  width: 15px;
+  padding-left: 10px;
+  color: transparent;
+  cursor: pointer;
+}
+input[type='search']:hover {
+  background-color: #fff;
+}
+input[type='search']:focus {
+  width: 130px;
+  padding-left: 32px;
+  color: #000;
+  background-color: #fff;
+  cursor: auto;
+}
+input:-moz-placeholder {
+  color: transparent;
+}
+input::-webkit-input-placeholder {
+  color: transparent;
 }
 </style>
