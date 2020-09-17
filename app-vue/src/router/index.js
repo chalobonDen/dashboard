@@ -22,7 +22,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/HomeDashboard',
+    path: '/',
     name: 'HomeDashboard',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -30,7 +30,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/HomeDashboard.vue'),
   },
   {
-    path: '/',
+    path: '/news',
+    name: 'news',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/news.vue'),
+  },
+  {
+    path: '/project',
     name: 'project',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -56,6 +64,15 @@ const routes = [
     path: '/testLogin',
     name: 'testLogin',
     component: () => import(/* webpackChunkName: "about" */ '../views/testLogin.vue'),
+  },
+
+  {
+    path: '/members',
+    name: 'members',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/members.vue'),
   },
 ]
 

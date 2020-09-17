@@ -6,7 +6,7 @@
   width: 100%;
   fixed; z-index:1;">
     <md-bottom-bar md-sync-route>
-      <md-bottom-bar-item style="min-width: 10px">
+      <md-bottom-bar-item style="min-width: 10px" to="/">
         <!-- to="/components/bottom-bar" -->
         <span
           class="iconify"
@@ -17,7 +17,7 @@
         <div id="menuBar">Home</div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px">
+      <md-bottom-bar-item style="min-width: 10px" to="/project">
         <span
           class="iconify"
           data-inline="false"
@@ -27,7 +27,7 @@
         <div id="menuBar">Projects</div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px">
+      <md-bottom-bar-item style="min-width: 10px" to="/news">
         <span
           class="iconify"
           data-inline="false"
@@ -37,7 +37,7 @@
         <div id="menuBar">News</div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px">
+      <md-bottom-bar-item style="min-width: 10px" to="/members">
         <span
           class="iconify"
           data-inline="false"

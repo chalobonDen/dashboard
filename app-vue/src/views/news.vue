@@ -1,12 +1,14 @@
 <template>
-  <div class="about">
-    <!-- <h1>This is an about page</h1> -->
+  <div>
     <Toolbar />
-
+    <br />
+    <br />
+    <br />
+    <br />
     <md-content>
-      <MenuContent />
+      <Event />
       <br />
-      <ListProject />
+      <Content />
     </md-content>
     <BarRouter />
   </div>
@@ -16,17 +18,20 @@
 // @ is an alias to /src
 import Toolbar from '@/components/Toolbar.vue'
 import BarRouter from '@/components/BarRouter.vue'
-import MenuContent from '@/components/MenuContent.vue'
-import ListProject from '@/components/ListProject.vue'
+import Event from '@/components/Event.vue'
+import Content from '@/components/Content.vue'
 
 export default {
-  name: 'HomeDashboard',
+  name: 'news',
   components: {
     Toolbar,
     BarRouter,
-    MenuContent,
-    ListProject,
+    Event,
+    Content,
   },
 }
 </script>
+
+<style scoped>
+</style>
 

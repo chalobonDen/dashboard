@@ -11,9 +11,8 @@
           <input type="search" name id v-model="search" />
           &nbsp;
           <select style="margin-right:18px; border:none;" name id>
-            <option value="all">All</option>
-            <option value="wip">WIP</option>
-            <option value="closed">Closed</option>
+            <option value>All</option>
+            <option value="status.statusId" v-for="sta in status" :key="sta.id">{{ sta.statusName }}</option>
           </select>
         </td>
       </table>
@@ -25,10 +24,10 @@
           <td align="left" style="width:75% ">
             <md-card-header id="title">
               <div class="md-title">
-                <b style="line-height: 0px;">{{list.name}}</b>
+                <b style="line-height: 0px;">{{ list.name }}</b>
               </div>
             </md-card-header>
-            <md-card-content id="position">{{list.position}}</md-card-content>
+            <md-card-content id="position">{{ list.position }}</md-card-content>
           </td>
           <td id="status" align="right">
             <md-chip
@@ -38,7 +37,7 @@
               style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
             >
               <span id="iconStatus" class="iconify" data-inline="false" data-icon="carbon:warning"></span>
-              {{list.status}}
+              {{ list.status }}
             </md-chip>
             <md-chip
               v-if="list.status == 'Done'"
@@ -50,12 +49,12 @@
                 data-inline="false"
                 data-icon="octicon:check-circle-24"
               ></span>
-              {{list.status}}
+              {{ list.status }}
             </md-chip>
           </td>
         </table>
         <md-card-content style="padding-top: 8px;">
-          <div>{{list.description}}</div>
+          <div>{{ list.description }}</div>
           <div style="margin-bottom:18px">
             <img
               align="right"
@@ -70,7 +69,7 @@
             />
           </div>
         </md-card-content>
-        {{user.userPic}}
+        {{ user.userPic }}
       </md-card>
     </div>
   </div>
@@ -81,6 +80,18 @@ export default {
   name: 'ListProjectAll',
   data() {
     return {
+      status: [
+        {
+          statusId: 1,
+          statusName: 'Done',
+          statusBoolean: true,
+        },
+        {
+          statusId: 2,
+          statusName: 'WIP',
+          statusBoolean: false,
+        },
+      ],
       lists: [
         {
           id: 1,
@@ -88,6 +99,7 @@ export default {
           position: 'Web Design',
           description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
           status: 'WIP',
+          statusBoolean: false,
         },
         {
           id: 2,
@@ -95,6 +107,7 @@ export default {
           position: 'Mobile App',
           description: 'The Dashboard that show the flow of work in the project.',
           status: 'WIP',
+          statusBoolean: false,
         },
         {
           id: 3,
@@ -102,6 +115,7 @@ export default {
           position: 'Marketing',
           description: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
           status: 'Done',
+          statusBoolean: true,
         },
         {
           id: 4,
@@ -109,6 +123,7 @@ export default {
           position: 'Mobile App',
           description: 'Consequat tempus nisi, orci, ligula duis.',
           status: 'Done',
+          statusBoolean: true,
         },
       ],
       search: '',
@@ -135,7 +150,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 div {
   font-family: 'Roboto';
 }
