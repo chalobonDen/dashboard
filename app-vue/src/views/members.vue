@@ -51,7 +51,22 @@
         </table>
       </div>
 
-      <div class="listmembers"></div>
+      <div class="listmembers">
+        <md-card id="card" align="center" v-for="member in memberFilter" :key="member.id">
+          <md-card-media>
+            <img id="imgProfile" v-bind:src="member.image" />
+          </md-card-media>
+          <div>{{member.position}}</div>
+          <div style="color:#0036C7; font-size:18px">
+            <b>{{member.name}}</b>
+          </div>
+          <br />
+          <div>Skill(s): {{member.skill}}</div>
+          <div>Project(s): {{member.projects}}</div>
+        </md-card>
+        <br />
+        <br />
+      </div>
     </md-content>
     <BarRouter />
   </div>
@@ -67,6 +82,46 @@ export default {
   components: {
     Toolbar,
     BarRouter,
+  },
+  data() {
+    return {
+      members: [
+        {
+          id: 1,
+          image: 'https://i.pinimg.com/564x/c4/23/85/c423853659015145795100c6006b554d.jpg',
+          name: 'Linda Lee',
+          position: 'Designers/Programmers',
+          skill: 'React, Redux, UI/UX',
+          projects: 1,
+        },
+        {
+          id: 2,
+          image: 'https://i.pinimg.com/564x/11/b5/77/11b5772556b0e717289456a352c3c706.jpg',
+          name: 'Mina Kung',
+          position: 'Analysis',
+          skill: 'HTML',
+          projects: 2,
+        },
+        {
+          id: 3,
+          image: 'https://i.pinimg.com/564x/9f/dd/dc/9fdddc39f0ac2925063ac8e32d461c36.jpg',
+          name: 'Fery Kimson',
+          position: 'Testers',
+          skill: 'JavaScript, React, UX/UI ',
+          projects: 2,
+        },
+      ],
+      search: '',
+      name: '',
+    }
+  },
+  computed: {
+    memberFilter() {
+      let text = this.search.trim()
+      return this.members.filter(item => {
+        return item.name.indexOf(text) > -1
+      })
+    },
   },
 }
 </script>
@@ -155,8 +210,27 @@ button {
 .listmembers {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
+}
+#card {
+  padding: 15px 15px 15px 15px;
+  border-radius: 5px;
+  /* เงากรอบขาว ระยะเงาด้านขวากับกรอบ ระยะเงาด้านล่างกับกรอบ ความฟุ่งของเงา สีของเงา*/
+  box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  margin-bottom: 24px; /* ระยะห่างระหว่าง card */
+  margin-top: 3px;
+}
+#imgProfile {
+  /* margin-top: 17px; */
+  border-radius: 100%;
+  box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  height: 120px;
+  width: 120px;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 </style>
 

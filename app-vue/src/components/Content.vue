@@ -10,7 +10,7 @@
     </div>
 
     <div class="news">
-      <md-card id="card" v-for="content in contents" :key="content.id" style="margin-bottom:15px">
+      <md-card id="card" v-for="content in contents" :key="content.id">
         <md-card-media>
           <img
             v-bind:src="content.imageUrl"
@@ -102,6 +102,7 @@ template {
   border-radius: 5px;
   /* เงากรอบขาว ระยะเงาด้านขวากับกรอบ ระยะเงาด้านล่างกับกรอบ ความฟุ่งของเงา สีของเงา*/
   box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  margin-bottom: 24px;
 }
 #iconStatus {
   font-size: 10px;

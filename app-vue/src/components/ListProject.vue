@@ -138,7 +138,7 @@ table {
 }
 
 #card {
-  margin: 0px 15px 15px 15px;
+  margin: 3px 15px 24px 15px; /* ระยะห่างรอบๆ card */
   border-radius: 5px;
 }
 

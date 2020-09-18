@@ -47,7 +47,7 @@
         <div id="menuBar">Members</div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px">
+      <md-bottom-bar-item style="min-width: 10px" to="/profile">
         <span
           class="iconify"
           data-inline="false"
