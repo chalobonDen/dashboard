@@ -61,11 +61,9 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
   name: 'Toolbar',
 }
-
 async function getUserProfile() {
   const profile = await liff.getProfile()
   document.getElementById('pictureUrl').src = profile.pictureUrl
@@ -73,7 +71,6 @@ async function getUserProfile() {
   document.getElementById('statusMessage').append(profile.statusMessage)
   document.getElementById('displayName').append(profile.displayName)
 }
-
 function getEnvironment() {
   document.getElementById('os').append(liff.getOS()) // liff.getOS() ทำให้เราทราบว่า liff ที่เราเปิดตอนนี้เปิดด้วย device อะไรอยู่ ex. แอนดรอย ios web
   document.getElementById('language').append(liff.getLanguage()) // liff.getLanguage() รู้ว่า client นี้ defalt เขาใช้ภาษาอะไร
@@ -90,7 +87,6 @@ function getEnvironment() {
   //   document.getElementById('btnClose').style.display = 'none'
   // }
 }
-
 async function main() {
   await liff.init({ liffId: '1654900324-lDYAE146' })
   getEnvironment()
@@ -109,17 +105,14 @@ main()
   padding: 8px 0;
   margin: 8px auto;
 }
-
 p {
   border-bottom: 1px dashed #ddd;
 } */
-
 #displayName {
   color: white;
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
-
 #pictureUrl {
   /* display: block; */
   /* margin: 0 auto; */
@@ -132,21 +125,17 @@ p {
   border-radius: 100px;
   /* margin-left: 40%; */
 }
-
 .logo {
   margin: 0px 10px 0px 15px;
   width: 22.5px;
 }
-
 .toolbar {
   background-color: black;
   height: 50px;
 }
-
 .profile {
   margin: 0px 10px 0px 10px;
 }
-
 #accessToken,
 #utouId {
   display: block;

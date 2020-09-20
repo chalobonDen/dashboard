@@ -37,7 +37,7 @@
         <div id="menuBar">News</div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px" to="/members">
+      <md-bottom-bar-item style="min-width: 10px" to="/member1">
         <span
           class="iconify"
           data-inline="false"

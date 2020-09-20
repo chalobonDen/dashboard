@@ -10,7 +10,7 @@
       <br />
       <div>
         <table style="width:100%; margin-bottom:10px">
-          <div style="margin-left:18px">
+          <div style="margin-left:18px ">
             <td align="left" style="font-size:20px; font-weight:550">
               <input type="search" name id v-model="search" />
             </td>
@@ -20,7 +20,7 @@
           <td align="right">
             &nbsp;
             <div style="margin-right:18px; border:none;">
-              <button>
+              <a-button>
                 <div>
                   <span
                     class="iconify"
@@ -30,11 +30,11 @@
                     style="font-size: 15px;"
                   ></span>
                 </div>
-              </button>
+              </a-button>
               <span style="margin-left:8px;"></span>
               <!-- ระยะห่างระหว่าง back กับ next -->
 
-              <button>
+              <a-button>
                 <div style="-webkit-transform: scaleX(-1); transform: scaleX(-1);">
                   <!-- กลับด้าน icons -->
                   <span
@@ -45,7 +45,7 @@
                     style="font-size: 15px; "
                   ></span>
                 </div>
-              </button>
+              </a-button>
             </div>
           </td>
         </table>
@@ -56,13 +56,13 @@
           <md-card-media>
             <img id="imgProfile" v-bind:src="member.image" />
           </md-card-media>
-          <div>{{member.position}}</div>
+          <div>{{ member.position }}</div>
           <div style="color:#0036C7; font-size:18px">
-            <b>{{member.name}}</b>
+            <b>{{ member.name }}</b>
           </div>
           <br />
-          <div>Skill(s): {{member.skill}}</div>
-          <div>Project(s): {{member.projects}}</div>
+          <div>Skill(s): {{ member.skill }}</div>
+          <div>Project(s): {{ member.projects }}</div>
         </md-card>
         <br />
         <br />
@@ -233,4 +233,3 @@ button {
   object-fit: cover;
 }
 </style>
-

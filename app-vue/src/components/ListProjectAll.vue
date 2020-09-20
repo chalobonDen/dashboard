@@ -10,10 +10,17 @@
         <td align="right">
           <input type="search" name id v-model="search" />
           &nbsp;
-          <select style="margin-right:18px; border:none;" name id>
-            <option value>All</option>
-            <option value="status.statusId" v-for="sta in status" :key="sta.id">{{ sta.statusName }}</option>
-          </select>
+          <a-select v-model="currentFilter" style="width: 28%; margin-right:18px;">
+            <a-select-option value="all">
+              <span style="font-size:10px">All</span>
+            </a-select-option>
+            <a-select-option value="WIP">
+              <span style="font-size:10px">WIP</span>
+            </a-select-option>
+            <a-select-option value="done">
+              <span style="font-size:10px">Done</span>
+            </a-select-option>
+          </a-select>
         </td>
       </table>
     </div>
@@ -36,7 +43,12 @@
               v-if="list.status == 'WIP'"
               style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
             >
-              <span id="iconStatus" class="iconify" data-inline="false" data-icon="carbon:warning"></span>
+              <span
+                id="iconStatus"
+                class="iconify"
+                data-inline="false"
+                data-icon="carbon:warning"
+              ></span>
               {{ list.status }}
             </md-chip>
             <md-chip
@@ -80,6 +92,7 @@ export default {
   name: 'ListProjectAll',
   data() {
     return {
+      currentFilter: 'all',
       status: [
         {
           statusId: 1,
@@ -145,6 +158,16 @@ export default {
       return this.lists.filter(item => {
         return item.name.indexOf(text) > -1
       })
+    },
+    selectFilter() {
+      const self = this
+      if (self.currentFilter === 'all') {
+        return self.lists
+      } else {
+        return self.currentFilter.filter(function(sta) {
+          return self.currentFilter === sta.status
+        })
+      }
     },
   },
 }
@@ -251,7 +274,7 @@ input[type='search']:hover {
   background-color: #fff;
 }
 input[type='search']:focus {
-  width: 50%; /* ความกว้างเวลาปุ่ม search ขยาย */
+  width: 43.5%; /* ความกว้างเวลาปุ่ม search ขยาย */
   padding-left: 32px;
   color: #000;
   background-color: #fff;

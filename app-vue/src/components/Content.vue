@@ -101,7 +101,7 @@ template {
   padding: 15px 15px 0 15px;
   border-radius: 5px;
   /* เงากรอบขาว ระยะเงาด้านขวากับกรอบ ระยะเงาด้านล่างกับกรอบ ความฟุ่งของเงา สีของเงา*/
-  box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  box-shadow: 1.5px 1.5px 5px #b1b1b1;
   margin-bottom: 24px;
 }
 #iconStatus {
