@@ -35,7 +35,7 @@
     <button id="btnClose" onclick="closed()">Close</button>-->
   </div>
 </template>
-    <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
 
 <script>
 // @ is an alias to /src
@@ -80,7 +80,7 @@ async function main() {
 main()
 </script>
 
-<style  scoped>
+<style scoped>
 button {
   display: block;
   width: 100%;
@@ -96,9 +96,7 @@ p {
   display: block;
   margin: 0 auto;
   width: 12%;
-  display: -moz-box;
-  display: -webkit-box;
-  display: box;
+  display: flex;
   -moz-box-pack: center;
   -moz-box-align: center;
   -webkit-box-pack: center;

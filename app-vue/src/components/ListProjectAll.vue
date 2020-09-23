@@ -24,10 +24,9 @@
         </td>
       </table>
     </div>
-
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in listFilter" :key="list.id">
-        <table id="listTask">
+      <md-card id="card" align="left" v-for="list in lists" :key="list.id">
+        <table>
           <td align="left" style="width:75% ">
             <md-card-header id="title">
               <div class="md-title">
@@ -66,22 +65,23 @@
           </td>
         </table>
         <md-card-content style="padding-top: 8px;">
-          <div>{{ list.description }}</div>
-          <div style="margin-bottom:18px">
-            <img
-              align="right"
-              src="https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512"
-              style="width:33px; border-radius: 100px; margin-left:4px"
-            />
+          <table>
+            <tr>
+              <div>{{ list.description }}</div>
+            </tr>
 
-            <img
-              align="right"
-              src="https://ca.slack-edge.com/T03EKL88Y-U01858A1810-7eaef9c3165e-512"
-              style="width:33px; border-radius: 100px; margin-left:4px"
-            />
-          </div>
+            <tr>
+              <div style="float:right;">
+                <td v-for="member in members" :key="member.id">
+                  <img
+                    v-bind:src="member.image"
+                    style="width:33px; border-radius: 100px; margin-left:4px"
+                  />
+                </td>
+              </div>
+            </tr>
+          </table>
         </md-card-content>
-        {{ user.userPic }}
       </md-card>
     </div>
   </div>
@@ -89,22 +89,9 @@
 
 <script>
 export default {
-  name: 'ListProjectAll',
+  name: 'ListProject',
   data() {
     return {
-      currentFilter: 'all',
-      status: [
-        {
-          statusId: 1,
-          statusName: 'Done',
-          statusBoolean: true,
-        },
-        {
-          statusId: 2,
-          statusName: 'WIP',
-          statusBoolean: false,
-        },
-      ],
       lists: [
         {
           id: 1,
@@ -112,7 +99,6 @@ export default {
           position: 'Web Design',
           description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
           status: 'WIP',
-          statusBoolean: false,
         },
         {
           id: 2,
@@ -120,7 +106,6 @@ export default {
           position: 'Mobile App',
           description: 'The Dashboard that show the flow of work in the project.',
           status: 'WIP',
-          statusBoolean: false,
         },
         {
           id: 3,
@@ -128,7 +113,6 @@ export default {
           position: 'Marketing',
           description: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
           status: 'Done',
-          statusBoolean: true,
         },
         {
           id: 4,
@@ -136,54 +120,57 @@ export default {
           position: 'Mobile App',
           description: 'Consequat tempus nisi, orci, ligula duis.',
           status: 'Done',
-          statusBoolean: true,
         },
       ],
-      search: '',
-      name: '',
-      position: '',
-      description: '',
-      user: [
+      members: [
         {
-          userId: 1,
-          username: 'jayjay',
-          userPic: 'https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512',
+          id: 7,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UN1SYFAAW-9d0ac330ef89-512',
+          name: 'ampere',
+          displayName: 'ampere',
+          department: 'Development',
+          position: 'Developer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 8,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-U0115EHAW73-5b10f51251f9-512',
+          name: 'duke',
+          displayName: 'duke',
+          department: 'Development',
+          position: 'Developer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 9,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
+          name: 'Kittayanee Khuankaew',
+          displayName: 'Angie',
+          department: 'Marketing',
+          position: 'Business Analysis',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
         },
       ],
     }
-  },
-  computed: {
-    listFilter() {
-      let text = this.search.trim()
-      return this.lists.filter(item => {
-        return item.name.indexOf(text) > -1
-      })
-    },
-    selectFilter() {
-      const self = this
-      if (self.currentFilter === 'all') {
-        return self.lists
-      } else {
-        return self.currentFilter.filter(function(sta) {
-          return self.currentFilter === sta.status
-        })
-      }
-    },
   },
 }
 </script>
 
 <style scoped>
-div {
-  font-family: 'Roboto';
-}
 .listProject {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
   padding-top: 15px;
   padding-bottom: 50px;
+  font-family: 'Roboto';
 }
-#listTask {
+table {
   border: none;
   width: 100%;
   padding-bottom: 0px;
@@ -233,16 +220,13 @@ input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
   display: none;
 }
-
 input[type='search'] {
   background: url(../assets/carbon_search.svg) no-repeat 9px center;
   border: none;
   padding: 2px 10px 2px; /* ขนาดกรอบของปุ่ม search */
-
   -webkit-border-radius: 10em;
   -moz-border-radius: 10em;
   border-radius: 10em;
-
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
@@ -251,19 +235,16 @@ input[type='search']:focus {
   /* width: 130px; */
   background-color: #fff;
   border-color: #66cc75;
-
   -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
   box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
 }
-
 input:-moz-placeholder {
   color: #999;
 }
 input::-webkit-input-placeholder {
   color: #999;
 }
-
 input[type='search'] {
   width: 15px;
   padding-left: 10px;

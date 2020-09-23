@@ -5,10 +5,10 @@
         <td align="left" style="width:75% ">
           <md-card-header id="title">
             <div class="md-title">
-              <b style="line-height: 0px;">{{list.name}}</b>
+              <b style="line-height: 0px;">{{ list.name }}</b>
             </div>
           </md-card-header>
-          <md-card-content id="position">{{list.position}}</md-card-content>
+          <md-card-content id="position">{{ list.position }}</md-card-content>
         </td>
         <td id="status" align="right">
           <md-chip
@@ -17,8 +17,13 @@
             v-if="list.status == 'WIP'"
             style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
           >
-            <span id="iconStatus" class="iconify" data-inline="false" data-icon="carbon:warning"></span>
-            {{list.status}}
+            <span
+              id="iconStatus"
+              class="iconify"
+              data-inline="false"
+              data-icon="carbon:warning"
+            ></span>
+            {{ list.status }}
           </md-chip>
           <md-chip
             v-if="list.status == 'Done'"
@@ -30,27 +35,28 @@
               data-inline="false"
               data-icon="octicon:check-circle-24"
             ></span>
-            {{list.status}}
+            {{ list.status }}
           </md-chip>
         </td>
       </table>
       <md-card-content style="padding-top: 8px;">
-        <div>{{list.description}}</div>
-        <div style="margin-bottom:18px">
-          <img
-            align="right"
-            src="https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512"
-            style="width:33px; border-radius: 100px; margin-left:4px"
-          />
+        <table>
+          <tr>
+            <div>{{ list.description }}</div>
+          </tr>
 
-          <img
-            align="right"
-            src="https://ca.slack-edge.com/T03EKL88Y-U01858A1810-7eaef9c3165e-512"
-            style="width:33px; border-radius: 100px; margin-left:4px"
-          />
-        </div>
+          <tr>
+            <div style="float:right;">
+              <td v-for="member in members" :key="member.id">
+                <img
+                  v-bind:src="member.image"
+                  style="width:33px; border-radius: 100px; margin-left:4px"
+                />
+              </td>
+            </div>
+          </tr>
+        </table>
       </md-card-content>
-      {{user.userPic}}
     </md-card>
   </div>
 </template>
@@ -90,11 +96,39 @@ export default {
           status: 'Done',
         },
       ],
-      user: [
+      members: [
         {
-          userId: 1,
-          username: 'jayjay',
-          userPic: 'https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512',
+          id: 7,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UN1SYFAAW-9d0ac330ef89-512',
+          name: 'ampere',
+          displayName: 'ampere',
+          department: 'Development',
+          position: 'Developer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 8,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-U0115EHAW73-5b10f51251f9-512',
+          name: 'duke',
+          displayName: 'duke',
+          department: 'Development',
+          position: 'Developer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 9,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
+          name: 'Kittayanee Khuankaew',
+          displayName: 'Angie',
+          department: 'Marketing',
+          position: 'Business Analysis',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
         },
       ],
     }
@@ -102,7 +136,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 .listProject {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;

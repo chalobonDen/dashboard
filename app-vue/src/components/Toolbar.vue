@@ -13,16 +13,16 @@
             <div class="profile">
               <img
                 id="pictureUrl"
-                :src="profileStore.pictureUrl || '../assets/teenyicons_user-circle-solid.svg'"
+                :src="
+                  profileStore.pictureUrl ||
+                    'https://cdn.iconscout.com/icon/premium/png-512-thumb/profile-1506810-1278719.png'
+                "
               />
-              &nbsp;&nbsp;&nbsp;
               <h3 id="displayName" style="display:inline">{{ profileStore.displayName }}</h3>
             </div>
           </td>
         </tr>
       </table>
-
-      <!-- <md-button class="md-primary">Create</md-button> -->
     </md-toolbar>
   </div>
 </template>
@@ -56,6 +56,13 @@ export default {
       this.$store.commit('setPicProfile', profile.pictureUrl)
       this.$store.commit('setDisplayName', profile.displayName)
       this.$store.commit('setStatusMessage', profile.statusMessage)
+    },
+    getEnvironment() {
+      document.getElementById('os').append(liff.getOS()) // liff.getOS() ทำให้เราทราบว่า liff ที่เราเปิดตอนนี้เปิดด้วย device อะไรอยู่ ex. แอนดรอย ios web
+      document.getElementById('language').append(liff.getLanguage()) // liff.getLanguage() รู้ว่า client นี้ defalt เขาใช้ภาษาอะไร
+      document.getElementById('version').append(liff.getVersion()) // liff.getVersion() เว่อร์ชั่น liff
+      document.getElementById('accessToken').append(liff.getAccessToken())
+      document.getElementById('isInClient').append(liff.isInClient())
     },
   },
 }
@@ -93,7 +100,7 @@ p {
   width: 22.5px;
 }
 .toolbar {
-  background-color: black;
+  background-color: #333333;
   height: 50px;
 }
 .profile {

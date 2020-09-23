@@ -1,5 +1,8 @@
 module.exports = {
   pluginOptions: {
-    vconsole: { enable: true /* others... */ },
+    vconsole: {
+      enable: true,
+    },
   },
+  transpileDependencies: ['vuetify'],
 }

@@ -20,8 +20,8 @@
         </md-card-media>
 
         <md-card-header align="left">
-          <div class="md-title" style="font-size:16px">{{content.imageAlt}}</div>
-          <div class="md-subhead" style="font-size:14px; color:black">{{content.data}}</div>
+          <div class="md-title" style="font-size:16px">{{ content.imageAlt }}</div>
+          <div class="md-subhead" style="font-size:14px; color:black">{{ content.data }}</div>
         </md-card-header>
 
         <md-card-expand>
@@ -34,7 +34,11 @@
           </md-card-actions>
 
           <md-card-expand-content>
-            <md-card-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.</md-card-content>
+            <md-card-content
+              >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum
+              odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate
+              pariatur in deleniti minus sint. Excepturi.</md-card-content
+            >
           </md-card-expand-content>
         </md-card-expand>
       </md-card>
@@ -85,7 +89,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 template {
   font-style: 'Roboto';
 }

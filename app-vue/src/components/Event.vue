@@ -15,11 +15,19 @@
           <!-- Date -->
           <td style="width:25%" id="date">
             <center>
-              <tr style="color:#8F8F8F">{{data.day}}</tr>
-              <tr>
-                <b>{{data.date}}</b>
+              <tr style="color:#8F8F8F">
+                {{
+                  data.day
+                }}
               </tr>
-              <tr style="color:#8F8F8F">{{data.month}}</tr>
+              <tr>
+                <b>{{ data.date }}</b>
+              </tr>
+              <tr style="color:#8F8F8F">
+                {{
+                  data.month
+                }}
+              </tr>
             </center>
           </td>
           <!-- End Date -->
@@ -30,10 +38,15 @@
           <!-- Description -->
           <td style="width:60%; padding-left:10px">
             <tr>
-              <b>{{data.name}}</b>
+              <b>{{ data.name }}</b>
             </tr>
-            <tr>{{data.description}}</tr>
+            <tr>
+              {{
+                data.description
+              }}
+            </tr>
           </td>
+
           <!-- End Description -->
 
           <!-- chip important and member -->
@@ -57,19 +70,9 @@
               <br />
               <br />
               <md-card-content style="padding-top: 8px;">
-                <div style="margin-bottom:18px">
-                  <img
-                    align="right"
-                    src="https://ca.slack-edge.com/T03EKL88Y-UTMUCNH1P-557445587bf1-512"
-                    style="width:33px; border-radius: 100px; margin-left:4px"
-                  />
-
-                  <img
-                    align="right"
-                    src="https://ca.slack-edge.com/T03EKL88Y-U01858A1810-7eaef9c3165e-512"
-                    style="width:33px; border-radius: 100px; margin-left:4px"
-                  />
-                </div>
+                <td style="margin-bottom:18px;" v-for="member in members" :key="member.id">
+                  <img id="profileImg" align="right" v-bind:src="member.image" />
+                </td>
               </md-card-content>
             </div>
           </td>
@@ -124,12 +127,47 @@ export default {
           status: 'Important',
         },
       ],
+      members: [
+        {
+          id: 9,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
+          name: 'Kittayanee Khuankaew',
+          displayName: 'Angie',
+          department: 'Marketing',
+          position: 'Business Analysis',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 10,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-U5VNS1XE1-d67dc521b341-512',
+          name: 'J A N G',
+          displayName: 'J A N G',
+          department: 'Design',
+          position: 'UX/UI Designer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+        {
+          id: 11,
+          image: 'https://ca.slack-edge.com/T03EKL88Y-UB1TJHGFR-c242e7741d3d-512',
+          name: 'Phitshayapa Wiangwat',
+          displayName: 'Patti is Happy',
+          department: 'Design',
+          position: 'UX/UI Designer',
+          skill: '',
+          projects: null,
+          type: 'Full-time',
+        },
+      ],
     }
   },
 }
 </script>
 
-<style  scoped>
+<style scoped>
 template {
   font-style: 'Roboto';
 }
@@ -142,6 +180,11 @@ template {
 #card {
   margin: 3px 15px 24px 15px; /* ระยะห่างรอบๆ card */
   border-radius: 5px;
+}
+#profileImg {
+  width: 33px;
+  border-radius: 100px;
+  margin-right: 4px;
 }
 #iconStatus {
   font-size: 10px;
