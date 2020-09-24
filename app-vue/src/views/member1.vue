@@ -3,182 +3,71 @@
     <!-- <h1>This is an about page</h1> -->
     <Toolbar />
 
-    <md-content id="content">
+    <md-content>
       <br />
       <br />
       <br />
       <br />
       <div>
-        <!-- filter department -->
-        <a-tabs default-active-key="1">
-          <a-tab-pane key="1" tab="HR/Admin">
-            <!-- search button -->
-            <table style="width:100%; margin-bottom:10px">
-              <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
-              </td>
-            </table>
-            <!-- end search button -->
-            <!-- list member Admin -->
-            <table style="width:100%;">
-              <div v-for="member in memberFilter" :key="member.id">
-                <div class="listmembers" v-if="member.department === 'HR/Admin'">
-                  <md-card id="card">
-                    <td id="card-media">
-                      <md-card-media>
-                        <div id="circle">
-                          <img id="imgProfile" v-bind:src="member.image" />
-                        </div>
-                      </md-card-media>
-                    </td>
-                    <td id="information" align="left">
-                      <div>
-                        <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
-                      </div>
-                      <div style="font-weight:500">{{ member.position }}</div>
-                      <br />
-                      <div style="font-size:12px">
-                        Full-time/Intern :
-                        <span style="font-weight:500;">{{ member.type }}</span>
-                      </div>
-                      <div style="font-size:12px">
-                        Department:
-                        <span style="font-weight:500">{{ member.department }}</span>
-                      </div>
-                    </td>
-                  </md-card>
+        <table style="width:100%; margin-bottom:10px">
+          <div style="margin-left:18px ">
+            <td align="left" style="font-size:20px; font-weight:550">
+              <input type="search" name id v-model="search" />
+            </td>
+          </div>
+
+          <!-- <div align="right" style="margin-right:18px;"> -->
+          <td align="right">
+            &nbsp;
+            <div style="margin-right:18px; border:none;">
+              <a-button>
+                <div>
+                  <span
+                    class="iconify"
+                    id="back"
+                    data-inline="false"
+                    data-icon="eva:arrow-ios-back-fill"
+                    style="font-size: 15px;"
+                  ></span>
                 </div>
-              </div>
-            </table>
-            <!-- end list member Admin -->
-          </a-tab-pane>
+              </a-button>
+              <span style="margin-left:8px;"></span>
+              <!-- ระยะห่างระหว่าง back กับ next -->
 
-          <a-tab-pane key="2" tab="Development">
-            <!-- search button -->
-            <table style="width:100%; margin-bottom:10px">
-              <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
-              </td>
-            </table>
-            <!-- end search button -->
-            <div v-for="member in memberFilter" :key="member.id">
-              <div class="listmembers" v-if="member.department === 'Development'">
-                <md-card id="card">
-                  <td id="card-media">
-                    <md-card-media>
-                      <div id="circle">
-                        <img id="imgProfile" v-bind:src="member.image" />
-                      </div>
-                    </md-card-media>
-                  </td>
-                  <td id="information" align="left">
-                    <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
-                    </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
-                    <br />
-                    <div style="font-size:12px">
-                      Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
-                    </div>
-                    <div style="font-size:12px">
-                      Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
-                    </div>
-                  </td>
-                </md-card>
-              </div>
+              <a-button>
+                <div style="-webkit-transform: scaleX(-1); transform: scaleX(-1);">
+                  <!-- กลับด้าน icons -->
+                  <span
+                    class="iconify"
+                    id="next"
+                    data-inline="false"
+                    data-icon="eva:arrow-ios-back-fill"
+                    style="font-size: 15px; "
+                  ></span>
+                </div>
+              </a-button>
             </div>
-          </a-tab-pane>
-
-          <a-tab-pane key="3" tab="Design" force-render>
-            <!-- search button -->
-            <table style="width:100%; margin-bottom:10px">
-              <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
-              </td>
-            </table>
-            <!-- end search button -->
-            <div v-for="member in memberFilter" :key="member.id">
-              <div class="listmembers" v-if="member.department === 'Design'">
-                <md-card id="card">
-                  <td id="card-media">
-                    <md-card-media>
-                      <div id="circle">
-                        <img id="imgProfile" v-bind:src="member.image" />
-                      </div>
-                    </md-card-media>
-                  </td>
-                  <td id="information" align="left">
-                    <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
-                    </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
-                    <br />
-                    <div style="font-size:12px">
-                      Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
-                    </div>
-                    <div style="font-size:12px">
-                      Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
-                    </div>
-                  </td>
-                </md-card>
-                <!-- <br />
-                <br />-->
-              </div>
-            </div>
-          </a-tab-pane>
-
-          <a-tab-pane key="4" tab="Digital Marketing">
-            <!-- search button -->
-            <table style="width:100%; margin-bottom:10px">
-              <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
-              </td>
-            </table>
-            <!-- end search button -->
-            <div v-for="member in memberFilter" :key="member.id">
-              <div class="listmembers" v-if="member.department === 'Marketing'">
-                <md-card id="card">
-                  <td id="card-media">
-                    <md-card-media>
-                      <div id="circle">
-                        <img id="imgProfile" v-bind:src="member.image" />
-                      </div>
-                    </md-card-media>
-                  </td>
-                  <td id="information" align="left">
-                    <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
-                    </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
-                    <br />
-                    <div style="font-size:12px">
-                      Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
-                    </div>
-                    <div style="font-size:12px">
-                      Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
-                    </div>
-                  </td>
-                </md-card>
-                <!-- <br />
-                <br />-->
-              </div>
-            </div>
-          </a-tab-pane>
-        </a-tabs>
+          </td>
+        </table>
       </div>
-      <div id="bottom-content">
-        <!-- พื้นที่ข้างล่างของ content  -->
+
+      <div class="listmembers">
+        <md-card id="card" align="center" v-for="member in memberFilter" :key="member.id">
+          <md-card-media>
+            <img id="imgProfile" v-bind:src="member.image" />
+          </md-card-media>
+          <div>{{ member.position }}</div>
+          <div style="color:#0036C7; font-size:18px">
+            <b>{{ member.name }}</b>
+          </div>
+          <br />
+          <div>Skill(s): {{ member.skill }}</div>
+          <div>Project(s): {{ member.projects }}</div>
+        </md-card>
+        <br />
+        <br />
       </div>
     </md-content>
-    <div style="padding-bottom:5px">
-      <!-- ระยะห่าง manu ข้างล่างกับ content -->
-    </div>
     <BarRouter />
   </div>
 </template>
@@ -189,7 +78,7 @@ import Toolbar from '@/components/Toolbar.vue'
 import BarRouter from '@/components/BarRouter.vue'
 
 export default {
-  name: 'member1',
+  name: 'about',
   components: {
     Toolbar,
     BarRouter,
@@ -199,148 +88,27 @@ export default {
       members: [
         {
           id: 1,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U03EKL89A-61874a193769-512',
-          name: 'Cholathit Khueankaew',
-          displayName: 'Cholathit',
-          department: 'HR/Admin',
-          position: 'Managing Director/CEO',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
+          image: 'https://i.pinimg.com/564x/c4/23/85/c423853659015145795100c6006b554d.jpg',
+          name: 'Linda Lee',
+          position: 'Designers/Programmers',
+          skill: 'React, Redux, UI/UX',
+          projects: 1,
         },
         {
           id: 2,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U9HRS33LH-aaf90ffd0fca-512',
-          name: 'Apichaya Hongsapak',
-          displayName: 'pim',
-          department: 'HR/Admin',
-          position: 'HR/Admin',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
+          image: 'https://i.pinimg.com/564x/11/b5/77/11b5772556b0e717289456a352c3c706.jpg',
+          name: 'Mina Kung',
+          position: 'Analysis',
+          skill: 'HTML',
+          projects: 2,
         },
         {
           id: 3,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UJHQAR5GB-13cee788d1c2-512',
-          name: 'Wisan Nakagawa',
-          displayName: 'arm wisan',
-          department: 'HR/Admin',
-          position: 'Community Manager',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-
-        {
-          id: 4,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UPX5YQEDU-3f1c55434773-512',
-          name: 'Thanwimol Manopen',
-          displayName: 'Mint Thanwimol',
-          department: 'Development',
-          position: 'Senior Project Manager',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-
-        {
-          id: 5,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U016R3WAQ4U-0e8e2de8e11e-512',
-          name: 'Surakarn Samkaew',
-          displayName: 'Tonkla',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 6,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UNGSE8TPH-g4cf4f9cc0af-512',
-          name: 'Nat W',
-          displayName: 'Nat W',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 7,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UN1SYFAAW-9d0ac330ef89-512',
-          name: 'ampere',
-          displayName: 'ampere',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 8,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U0115EHAW73-5b10f51251f9-512',
-          name: 'duke',
-          displayName: 'duke',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 9,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
-          name: 'Kittayanee Khuankaew',
-          displayName: 'Angie',
-          department: 'Marketing',
-          position: 'Business Analysis',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 10,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U5VNS1XE1-d67dc521b341-512',
-          name: 'J A N G',
-          displayName: 'J A N G',
-          department: 'Design',
-          position: 'UX/UI Designer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 11,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UB1TJHGFR-c242e7741d3d-512',
-          name: 'Phitshayapa Wiangwat',
-          displayName: 'Patti is Happy',
-          department: 'Design',
-          position: 'UX/UI Designer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 12,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UDRN3RWAJ-b8a538630c17-512',
-          name: 'Pawiness Boonyothayan',
-          displayName: 'Gin',
-          department: 'Marketing',
-          position: 'Marketing Strategic Planner',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 13,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-US202147N-17595e2b2c00-512',
-          name: 'Khomsun Chaiwong',
-          displayName: 'Mooyai',
-          department: 'Design',
-          position: 'Designer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
+          image: 'https://i.pinimg.com/564x/9f/dd/dc/9fdddc39f0ac2925063ac8e32d461c36.jpg',
+          name: 'Fery Kimson',
+          position: 'Testers',
+          skill: 'JavaScript, React, UX/UI ',
+          projects: 2,
         },
       ],
       search: '',
@@ -361,21 +129,6 @@ export default {
 <style scoped>
 div {
   font-family: 'Roboto';
-}
-
-#content {
-  margin-bottom: 80px;
-  /* ระยะห่างระหว่าง content กับแถบ menu ข้างล่าง */
-}
-
-#bottom-content {
-  /* พื้นที่ข้างล่างของ content */
-  margin: 0px 18px 0px 18px;
-  background-color: #e9f0ff;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 15px;
-  padding-bottom: 5px;
 }
 
 /* search button */
@@ -460,47 +213,23 @@ button {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
-  padding-bottom: 5px; /* ระยะห่างระหว่าง card */
+  padding-bottom: 0px;
 }
 #card {
-  /* padding: 15px 15px 15px 15px; */
+  padding: 15px 15px 15px 15px;
   border-radius: 5px;
   /* เงากรอบขาว ระยะเงาด้านขวากับกรอบ ระยะเงาด้านล่างกับกรอบ ความฟุ่งของเงา สีของเงา*/
-  box-shadow: 1.5px 1.5px 5px #b1b1b1;
-  margin-bottom: 0px; /* ระยะห่างระหว่าง card */
+  box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  margin-bottom: 24px; /* ระยะห่างระหว่าง card */
   margin-top: 3px;
-}
-#card-media {
-  background-color: #9daace;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  padding-top: 8%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 40px;
-}
-#information {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 40px;
-  padding-top: 8%;
-  vertical-align: middle;
 }
 #imgProfile {
   /* margin-top: 17px; */
-  margin-top: 2px;
   border-radius: 100%;
-  height: 80px;
-  width: 80px;
+  box-shadow: 1.5px 1.5px 10px #b1b1b1;
+  height: 120px;
+  width: 120px;
+  margin-bottom: 20px;
   object-fit: cover;
-  border: 4px solid #9daace;
-}
-#circle {
-  width: 84px;
-  height: 84px;
-  background: rgb(255, 255, 255);
-  -moz-border-radius: 70px;
-  -webkit-border-radius: 70px;
-  border-radius: 70px;
 }
 </style>

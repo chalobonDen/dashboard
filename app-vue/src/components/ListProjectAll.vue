@@ -8,7 +8,13 @@
 
         <!-- <div align="right" style="margin-right:18px;"> -->
         <td align="right">
-          <input type="search" name id v-model="search" />
+          <a-input-search
+            v-model="search"
+            type="search"
+            placeholder="input search text"
+            style="width: 50%"
+            @search="onSearch"
+          />
           &nbsp;
           <a-select v-model="currentFilter" style="width: 28%; margin-right:18px;">
             <a-select-option value="all">
@@ -25,7 +31,7 @@
       </table>
     </div>
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in lists" :key="list.id">
+      <md-card id="card" align="left" v-for="list in searchFilter" :key="list.id">
         <table>
           <td align="left" style="width:75% ">
             <md-card-header id="title">
@@ -157,7 +163,16 @@ export default {
           type: 'Full-time',
         },
       ],
+      search: '',
     }
+  },
+  computed: {
+    searchFilter() {
+      let text = this.search.trim()
+      return this.lists.filter(item => {
+        return item.name.indexOf(text) > -1
+      })
+    },
   },
 }
 </script>
@@ -206,65 +221,5 @@ table {
   font-size: 16px;
   margin-bottom: -1px; /* ระยะห่างระหว่างชื่อโปรเจคกับตำแหน่งงาน */
   line-height: 20px; /* ระยะห่างระหว่างบรรทัดของชื่อโปรเจค เวลาขึ้นบรรทัดใหม่ */
-}
-
-/* search button */
-input {
-  outline: none;
-}
-input[type='search'] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-}
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button {
-  display: none;
-}
-input[type='search'] {
-  background: url(../assets/carbon_search.svg) no-repeat 9px center;
-  border: none;
-  padding: 2px 10px 2px; /* ขนาดกรอบของปุ่ม search */
-  -webkit-border-radius: 10em;
-  -moz-border-radius: 10em;
-  border-radius: 10em;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-}
-input[type='search']:focus {
-  /* width: 130px; */
-  background-color: #fff;
-  border-color: #66cc75;
-  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
-}
-input:-moz-placeholder {
-  color: #999;
-}
-input::-webkit-input-placeholder {
-  color: #999;
-}
-input[type='search'] {
-  width: 15px;
-  padding-left: 10px;
-  color: transparent;
-  cursor: pointer;
-}
-input[type='search']:hover {
-  background-color: #fff;
-}
-input[type='search']:focus {
-  width: 43.5%; /* ความกว้างเวลาปุ่ม search ขยาย */
-  padding-left: 32px;
-  color: #000;
-  background-color: #fff;
-  cursor: auto;
-}
-input:-moz-placeholder {
-  color: transparent;
-}
-input::-webkit-input-placeholder {
-  color: transparent;
 }
 </style>

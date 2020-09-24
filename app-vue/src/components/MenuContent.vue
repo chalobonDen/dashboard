@@ -33,6 +33,7 @@
         </td>
       </tr>
     </table>
+
     <table align="center" style="width:100%">
       <tr>
         <td>
@@ -44,7 +45,7 @@
               style="color: #0036c7; font-size: 22px;"
             ></span>
             <div class="container">
-              <b id="number">{{numTaskToday}}</b>
+              <b id="number">{{ numTaskToday }}</b>
               <p>Today’s Tasks</p>
             </div>
           </div>
@@ -67,7 +68,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style scoped>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
