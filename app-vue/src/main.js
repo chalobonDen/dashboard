@@ -5,10 +5,15 @@ import Button from 'ant-design-vue/lib/button'
 import 'ant-design-vue/dist/antd.css'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
 
 Vue.component(Button.name, Button)
 Vue.prototype.$liff = window.liff
 Vue.config.productionTip = false
+Vue.use(Vuesax, {
+  // options here
+})
 
 new Vue({
   router,

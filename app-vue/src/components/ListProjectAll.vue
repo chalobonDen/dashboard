@@ -75,7 +75,7 @@
               <div>{{ list.description }}</div>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <div style="float:right;">
                 <td v-for="member in members" :key="member.id">
                   <img
@@ -84,7 +84,18 @@
                   />
                 </td>
               </div>
-            </tr>
+            </tr> -->
+
+            <!-- list member -->
+            <vs-avatar-group float max="4" style="float:right; margin-top:10px;">
+              <vs-avatar
+                v-for="member in members"
+                :key="member.id"
+                style="border-radius: 100%; margin-left:3px; width:33px; height:33px;"
+              >
+                <img v-bind:src="member.image" />
+              </vs-avatar>
+            </vs-avatar-group>
           </table>
         </md-card-content>
       </md-card>

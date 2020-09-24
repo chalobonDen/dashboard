@@ -36,47 +36,53 @@
           <td class="vl"></td>
 
           <!-- Description -->
-          <td style="width:60%; padding-left:10px">
+          <td style="width:80%; padding-left:10px">
             <tr>
-              <b>{{ data.name }}</b>
+              <!-- Description Event -->
+              <td style="width:75%; padding-left:10px">
+                <tr>
+                  <b>{{ data.name }}</b>
+                </tr>
+                <tr>
+                  {{
+                    data.description
+                  }}
+                </tr>
+              </td>
+
+              <!-- Important Icon -->
+              <td align="right" style="width:5%; margin-right:10px; padding-left:10px;">
+                <md-chip
+                  class="md-accent"
+                  md-clickable
+                  v-if="data.status == 'Important'"
+                  style="margin:10px 10px 10px 10px ; background-color:#FFE24D; color:black; font-size: 11px; width:90px; text-align:center; font-weight:550;"
+                >
+                  <span
+                    id="iconStatus"
+                    class="iconify"
+                    data-inline="false"
+                    data-icon="bi:bookmark"
+                    style="font-size: 14px;"
+                  ></span>
+                  {{ data.status }}
+                </md-chip>
+              </td>
             </tr>
-            <tr>
-              {{
-                data.description
-              }}
+
+            <!-- Member -->
+            <tr style="float:right; padding-left:10px;">
+              <vs-avatar-group float max="4" style="margin-bottom:24px; margin-right: 10px;">
+                <vs-avatar
+                  v-for="member in members"
+                  :key="member.id"
+                  style="border-radius: 100%; margin-left:3px; width:33px; height:33px;"
+                >
+                  <img v-bind:src="member.image" />
+                </vs-avatar>
+              </vs-avatar-group>
             </tr>
           </td>
-
-          <!-- End Description -->
-
-          <!-- chip important and member -->
-          <td style="width:15%">
-            <div align="right">
-              <md-chip
-                class="md-accent"
-                md-clickable
-                v-if="data.status == 'Important'"
-                style="margin:10px 10px 10px 10px ; background-color:#FFE24D; color:black; font-size: 11px; width:90px; text-align:center; font-weight:550;"
-              >
-                <span
-                  id="iconStatus"
-                  class="iconify"
-                  data-inline="false"
-                  data-icon="bi:bookmark"
-                  style="font-size: 14px;"
-                ></span>
-                {{ data.status }}
-              </md-chip>
-              <br />
-              <br />
-              <md-card-content style="padding-top: 8px;">
-                <td style="margin-bottom:18px;" v-for="member in members" :key="member.id">
-                  <img id="profileImg" align="right" v-bind:src="member.image" />
-                </td>
-              </md-card-content>
-            </div>
-          </td>
-          <!-- End chip important and member -->
         </table>
       </md-card>
     </div>
@@ -84,84 +90,14 @@
 </template>
 
 <script>
+import store from '../store/index.js'
 export default {
   name: 'Event',
 
   data() {
     return {
-      news: [
-        {
-          id: 1,
-          date: '1',
-          month: 'May',
-          day: 'Fri',
-          name: 'Intern | progress',
-          description: 'In 2nd floor meeting room',
-          status: 'Important',
-        },
-        {
-          id: 2,
-          date: '10',
-          month: 'May',
-          day: 'Sun',
-          name: 'Intern | progress',
-          description: 'In 2nd floor meeting room',
-          status: 'Important',
-        },
-        {
-          id: 3,
-          date: '29',
-          month: 'May',
-          day: 'Fri',
-          name: 'Intern | progress',
-          description: 'In 2nd floor meeting room',
-          status: 'Important',
-        },
-        {
-          id: 4,
-          date: '30',
-          month: 'May',
-          day: 'Fri',
-          name: 'Intern | progress',
-          description: 'In 2nd floor meeting room',
-          status: 'Important',
-        },
-      ],
-      members: [
-        {
-          id: 9,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
-          name: 'Kittayanee Khuankaew',
-          displayName: 'Angie',
-          department: 'Marketing',
-          position: 'Business Analysis',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 10,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U5VNS1XE1-d67dc521b341-512',
-          name: 'J A N G',
-          displayName: 'J A N G',
-          department: 'Design',
-          position: 'UX/UI Designer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 11,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UB1TJHGFR-c242e7741d3d-512',
-          name: 'Phitshayapa Wiangwat',
-          displayName: 'Patti is Happy',
-          department: 'Design',
-          position: 'UX/UI Designer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-      ],
+      news: store.state.news,
+      members: store.state.members,
     }
   },
 }
