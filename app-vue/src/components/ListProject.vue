@@ -62,75 +62,13 @@
 </template>
 
 <script>
+import store from '../store/index.js'
 export default {
   name: 'ListProject',
   data() {
     return {
-      lists: [
-        {
-          id: 1,
-          name: 'Project #1',
-          position: 'Web Design',
-          description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
-          status: 'WIP',
-        },
-        {
-          id: 2,
-          name: 'Artisan’ Dashboard Project',
-          position: 'Mobile App',
-          description: 'The Dashboard that show the flow of work in the project.',
-          status: 'WIP',
-        },
-        {
-          id: 3,
-          name: 'Project #2',
-          position: 'Marketing',
-          description: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
-          status: 'Done',
-        },
-        {
-          id: 4,
-          name: 'Project #3',
-          position: 'Mobile App',
-          description: 'Consequat tempus nisi, orci, ligula duis.',
-          status: 'Done',
-        },
-      ],
-      members: [
-        {
-          id: 7,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UN1SYFAAW-9d0ac330ef89-512',
-          name: 'ampere',
-          displayName: 'ampere',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 8,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-U0115EHAW73-5b10f51251f9-512',
-          name: 'duke',
-          displayName: 'duke',
-          department: 'Development',
-          position: 'Developer',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-        {
-          id: 9,
-          image: 'https://ca.slack-edge.com/T03EKL88Y-UR7G91LAH-5f30317a29ec-512',
-          name: 'Kittayanee Khuankaew',
-          displayName: 'Angie',
-          department: 'Marketing',
-          position: 'Business Analysis',
-          skill: '',
-          projects: null,
-          type: 'Full-time',
-        },
-      ],
+      lists: store.state.lists,
+      members: store.state.members,
     }
   },
 }
