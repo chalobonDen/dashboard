@@ -63,7 +63,13 @@
             <!-- search button -->
             <table style="width:100%; margin-bottom:10px">
               <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
+                <a-input-search
+                  v-model="search"
+                  type="search"
+                  placeholder="input search text"
+                  style="width: 50%"
+                  @search="onSearch"
+                />
               </td>
             </table>
             <!-- end search button -->
@@ -101,7 +107,13 @@
             <!-- search button -->
             <table style="width:100%; margin-bottom:10px">
               <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
+                <a-input-search
+                  v-model="search"
+                  type="search"
+                  placeholder="input search text"
+                  style="width: 50%"
+                  @search="onSearch"
+                />
               </td>
             </table>
             <!-- end search button -->
@@ -141,7 +153,13 @@
             <!-- search button -->
             <table style="width:100%; margin-bottom:10px">
               <td align="right" style="padding-right:18px">
-                <input type="search" name id v-model="search" />
+                <a-input-search
+                  v-model="search"
+                  type="search"
+                  placeholder="input search text"
+                  style="width: 50%"
+                  @search="onSearch"
+                />
               </td>
             </table>
             <!-- end search button -->

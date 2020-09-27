@@ -30,7 +30,7 @@
       </table>
     </div>
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in selectFilter" :key="list.id">
+      <md-card id="card" align="left" v-for="list in searchFilter" :key="list.id">
         <div>
           <table>
             <td align="left" style="width:75% ">
@@ -112,21 +112,29 @@ export default {
   computed: {
     searchFilter() {
       let text = this.search.trim()
+      let filterStatus = this.currentFilter.trim()
+
       return this.lists.filter(item => {
-        return item.name.indexOf(text) > -1
+        let filtered = true
+        if (filterStatus && filterStatus.length > 0) {
+          filtered = item.status == filterStatus
+          return filtered
+        } else {
+          return item.name.indexOf(text) > -1
+        }
       })
     },
 
-    selectFilter() {
-      let filterStatus = this.currentFilter.trim()
-      return this.lists.filter(status => {
-        let filtered = true
-        if (filterStatus && filterStatus.length > 0) {
-          filtered = status.status == filterStatus
-        }
-        return filtered
-      })
-    },
+    // selectFilter() {
+    //   let filterStatus = this.currentFilter.trim()
+    //   return this.lists.filter(status => {
+    //     let filtered = true
+    //     if (filterStatus && filterStatus.length > 0) {
+    //       filtered = status.status == filterStatus
+    //     }
+    //     return filtered
+    //   })
+    // },
   },
 }
 </script>

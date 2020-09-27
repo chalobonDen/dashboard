@@ -1,7 +1,21 @@
-<template> </template>
+<template>
+  <div>
+    <Toolbar />
+    <BarRouter />
+  </div>
+</template>
 
 <script>
-export default {}
+import Toolbar from '@/components/Toolbar.vue'
+import BarRouter from '@/components/BarRouter.vue'
+
+export default {
+  name: 'editprofile',
+  components: {
+    Toolbar,
+    BarRouter,
+  },
+}
 </script>
 
 <style></style>

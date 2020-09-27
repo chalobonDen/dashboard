@@ -93,11 +93,25 @@
       </a-row>
 
       <!-- edit button -->
-      <a-row style="margin-bottom:10px">
+      <a-row style="margin-bottom:20px">
         <a-col>
-          <a-button type="primary" style="width:100%">
+          <v-btn
+            block
+            color="primary"
+            elevation="2"
+            to="/editprofile"
+            style="text-transform: capitalize; background-color: #105EFB;"
+            >Edit profile</v-btn
+          >
+
+          <!-- <a-button
+            type="primary"
+            class="md-raised md-primary"
+            style="width:100%; text-transform: capitalize;"
+            to="/editprofile"
+          >
             Edit profile
-          </a-button>
+          </a-button> -->
         </a-col>
       </a-row>
       <hr style="color:#a3a3a3; weight:550; margin-bottom:20px" />
