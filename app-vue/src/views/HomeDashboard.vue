@@ -7,6 +7,9 @@
       <MenuContent />
       <br />
       <ListProject />
+      <div style="padding-bottom:30px">
+        <!-- ระยะห่าง manu ข้างล่างกับ content -->
+      </div>
     </md-content>
     <BarRouter />
   </div>

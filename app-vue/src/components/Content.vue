@@ -42,8 +42,9 @@
           </md-card-expand-content>
         </md-card-expand>
       </md-card>
-      <br />
-      <br />
+    </div>
+    <div style="padding-bottom:80px">
+      <!-- ระยะห่าง manu ข้างล่างกับ content -->
     </div>
   </div>
 </template>
@@ -99,7 +100,7 @@ template {
   padding-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 0.5px;
 }
 #card {
   padding: 15px 15px 0 15px;

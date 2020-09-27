@@ -5,7 +5,7 @@
         <tr>
           <td align="left">
             <!-- style="width:30%" -->
-            <img class="logo" src="../assets/logo4.png" />
+            <a-icon type="left" />
             <!-- style="width:18%;" -->
           </td>
 
@@ -32,7 +32,7 @@
 // @ is an alias to /src
 import { mapState } from 'vuex'
 export default {
-  name: 'Toolbar',
+  name: 'ToolbarBack',
   computed: {
     ...mapState({
       profileStore: store => store.profile,

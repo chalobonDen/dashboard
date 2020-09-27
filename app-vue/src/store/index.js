@@ -167,6 +167,7 @@ export default new Vuex.Store({
         position: 'Web Design',
         description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
         status: 'WIP',
+        urlProject: 'https://cdn.auth0.com/blog/illustrations/vuejs.png',
       },
       {
         id: 2,
@@ -174,6 +175,7 @@ export default new Vuex.Store({
         position: 'Mobile App',
         description: 'The Dashboard that show the flow of work in the project.',
         status: 'WIP',
+        urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
       },
       {
         id: 3,
@@ -181,6 +183,7 @@ export default new Vuex.Store({
         position: 'Marketing',
         description: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
         status: 'Done',
+        urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
       },
       {
         id: 4,
@@ -188,6 +191,7 @@ export default new Vuex.Store({
         position: 'Mobile App',
         description: 'Consequat tempus nisi, orci, ligula duis.',
         status: 'Done',
+        urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
       },
     ],
     news: [

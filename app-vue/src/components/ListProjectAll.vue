@@ -16,13 +16,13 @@
           />
           &nbsp;
           <a-select v-model="currentFilter" style="width: 28%; margin-right:18px;">
-            <a-select-option value="all">
+            <a-select-option value="">
               <span style="font-size:10px">All</span>
             </a-select-option>
             <a-select-option value="WIP">
               <span style="font-size:10px">WIP</span>
             </a-select-option>
-            <a-select-option value="done">
+            <a-select-option value="Done">
               <span style="font-size:10px">Done</span>
             </a-select-option>
           </a-select>
@@ -30,75 +30,69 @@
       </table>
     </div>
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in searchFilter" :key="list.id">
-        <table>
-          <td align="left" style="width:75% ">
-            <md-card-header id="title">
-              <div class="md-title">
-                <b style="line-height: 0px;">{{ list.name }}</b>
-              </div>
-            </md-card-header>
-            <md-card-content id="position">{{ list.position }}</md-card-content>
-          </td>
-          <td id="status" align="right">
-            <md-chip
-              class="md-accent"
-              md-clickable
-              v-if="list.status == 'WIP'"
-              style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
-            >
-              <span
-                id="iconStatus"
-                class="iconify"
-                data-inline="false"
-                data-icon="carbon:warning"
-              ></span>
-              {{ list.status }}
-            </md-chip>
-            <md-chip
-              v-if="list.status == 'Done'"
-              style="background-color:#4DD987; color:black; font-size: 11px; font-weight:500;"
-            >
-              <span
-                id="iconStatus"
-                class="iconify"
-                data-inline="false"
-                data-icon="octicon:check-circle-24"
-              ></span>
-              {{ list.status }}
-            </md-chip>
-          </td>
-        </table>
-        <md-card-content style="padding-top: 8px;">
+      <md-card id="card" align="left" v-for="list in selectFilter" :key="list.id">
+        <div>
           <table>
-            <tr>
-              <div>{{ list.description }}</div>
-            </tr>
-
-            <!-- <tr>
-              <div style="float:right;">
-                <td v-for="member in members" :key="member.id">
-                  <img
-                    v-bind:src="member.image"
-                    style="width:33px; border-radius: 100px; margin-left:4px"
-                  />
-                </td>
-              </div>
-            </tr> -->
-
-            <!-- list member -->
-            <vs-avatar-group float max="4" style="float:right; margin-top:10px;">
-              <vs-avatar
-                v-for="member in members"
-                :key="member.id"
-                style="border-radius: 100%; margin-left:3px; width:33px; height:33px;"
+            <td align="left" style="width:75% ">
+              <md-card-header id="title">
+                <div class="md-title">
+                  <b style="line-height: 0px;">{{ list.name }}</b>
+                </div>
+              </md-card-header>
+              <md-card-content id="position">{{ list.position }}</md-card-content>
+            </td>
+            <td id="status" align="right">
+              <md-chip
+                class="md-accent"
+                md-clickable
+                v-if="list.status == 'WIP'"
+                style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
               >
-                <img v-bind:src="member.image" />
-              </vs-avatar>
-            </vs-avatar-group>
+                <span
+                  id="iconStatus"
+                  class="iconify"
+                  data-inline="false"
+                  data-icon="carbon:warning"
+                ></span>
+                {{ list.status }}
+              </md-chip>
+              <md-chip
+                v-if="list.status == 'Done'"
+                style="background-color:#4DD987; color:black; font-size: 11px; font-weight:500;"
+              >
+                <span
+                  id="iconStatus"
+                  class="iconify"
+                  data-inline="false"
+                  data-icon="octicon:check-circle-24"
+                ></span>
+                {{ list.status }}
+              </md-chip>
+            </td>
           </table>
-        </md-card-content>
+          <md-card-content style="padding-top: 8px;">
+            <table>
+              <tr>
+                <div>{{ list.description }}</div>
+              </tr>
+
+              <!-- list member -->
+              <vs-avatar-group float max="4" style="float:right; margin-top:10px;">
+                <vs-avatar
+                  v-for="member in members"
+                  :key="member.id"
+                  style="border-radius: 100%; margin-left:3px; width:33px; height:33px;"
+                >
+                  <img v-bind:src="member.image" />
+                </vs-avatar>
+              </vs-avatar-group>
+            </table>
+          </md-card-content>
+        </div>
       </md-card>
+    </div>
+    <div style="padding-bottom:90px">
+      <!-- ระยะห่าง manu ข้างล่างกับ content -->
     </div>
   </div>
 </template>
@@ -112,6 +106,7 @@ export default {
       search: '',
       lists: store.state.lists,
       members: store.state.members,
+      currentFilter: '',
     }
   },
   computed: {
@@ -119,6 +114,17 @@ export default {
       let text = this.search.trim()
       return this.lists.filter(item => {
         return item.name.indexOf(text) > -1
+      })
+    },
+
+    selectFilter() {
+      let filterStatus = this.currentFilter.trim()
+      return this.lists.filter(status => {
+        let filtered = true
+        if (filterStatus && filterStatus.length > 0) {
+          filtered = status.status == filterStatus
+        }
+        return filtered
       })
     },
   },
@@ -130,7 +136,7 @@ export default {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
   padding-top: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 2px;
   font-family: 'Roboto';
 }
 table {

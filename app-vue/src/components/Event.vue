@@ -40,14 +40,14 @@
             <tr>
               <!-- Description Event -->
               <td style="width:75%; padding-left:10px">
-                <tr>
+                <div>
                   <b>{{ data.name }}</b>
-                </tr>
-                <tr>
+                </div>
+                <!-- <tr>
                   {{
                     data.description
                   }}
-                </tr>
+                </tr> -->
               </td>
 
               <!-- Important Icon -->
@@ -69,6 +69,13 @@
                 </md-chip>
               </td>
             </tr>
+
+            <!-- Description Event -->
+            <div>
+              <td style="width:80%; padding-left:10px">
+                {{ data.description }}
+              </td>
+            </div>
 
             <!-- Member -->
             <tr style="float:right; padding-left:10px;">
@@ -104,14 +111,14 @@ export default {
 </script>
 
 <style scoped>
-template {
-  font-style: 'Roboto';
+div {
+  font-family: 'Roboto';
 }
 .news {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 #card {
   margin: 3px 15px 24px 15px; /* ระยะห่างรอบๆ card */
