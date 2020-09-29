@@ -46,10 +46,12 @@
     </v-row>
 
     <v-row style="margin-left:6px; margin-right:6px;">
-      <v-col>
-        <v-card>
+      <v-col v-if="project">
+        <v-card v-for="date in project.date" :key="date.id">
           <div style="padding-top:10px"><a-icon type="calendar" style="color:#105EFB" /></div>
-          <div><b>10 Sep 2023</b></div>
+          <div>
+            <b>{{ date.day }} {{ date.month }} {{ date.year }}</b>
+          </div>
           <div id="position" style="padding-bottom:10px">Release Date</div>
         </v-card>
       </v-col>
@@ -59,14 +61,14 @@
     <div style="margin-left:18px; margin-right:18px;">
       <v-row>
         <v-col><span style="float:left; font-size:20px; font-weight:550">Task</span></v-col>
-        <v-col
-          ><v-btn
-            :to="{ name: 'createTask', params: { id: projectFunc.id } }"
+        <v-col>
+          <v-btn
+            @click="showDrawer()"
             color="primary"
             style="float:right; text-transform: capitalize; background-color: #105EFB; border-radius: 15px;"
             ><a-icon type="plus-circle" style="margin-right:2.5px" />Create</v-btn
-          ></v-col
-        >
+          >
+        </v-col>
       </v-row>
       <div v-if="project">
         <!-- check ว่า มี project มั้ย -->
@@ -146,6 +148,154 @@
     <div style="padding-bottom:90px">
       <!-- ระยะห่าง manu ข้างล่างกับ content -->
     </div>
+
+    <!-- show drawer -->
+    <a-drawer
+      title="Create Tasks"
+      :width="320"
+      :visible="visible"
+      :body-style="{ paddingBottom: '80px' }"
+      @close="onClose"
+    >
+      <a-form :form="form" layout="vertical" hide-required-mark>
+        <a-row :gutter="16">
+          <a-form-item label="Task name">
+            <a-input
+              v-decorator="[
+                'taskName',
+                {
+                  rules: [{ required: true, message: 'Please enter task name' }],
+                },
+              ]"
+              placeholder="Please enter task name"
+            />
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="Url">
+            <a-input
+              v-decorator="[
+                'url',
+                {
+                  rules: [{ required: true, message: 'please enter url' }],
+                },
+              ]"
+              style="width: 100%"
+              addon-before="http://"
+              addon-after=".com"
+              placeholder="please enter url"
+            />
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="Members">
+            <a-input
+              v-decorator="[
+                'owner',
+                {
+                  rules: [{ required: true, message: 'Please mention member' }],
+                },
+              ]"
+              placeholder="@ mention member"
+            >
+            </a-input>
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="Type">
+            <a-input
+              v-decorator="[
+                'type',
+                {
+                  rules: [{ required: true, message: 'Please choose the type' }],
+                },
+              ]"
+              placeholder="Please choose the type"
+            >
+            </a-input>
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="Approver">
+            <a-input
+              v-decorator="[
+                'approver',
+                {
+                  rules: [{ required: true, message: 'Please mention people' }],
+                },
+              ]"
+              placeholder="@ mention people"
+            >
+            </a-input>
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="DateTime">
+            <a-col :span="12">
+              <a-date-picker
+                v-decorator="[
+                  'dateTime',
+                  {
+                    rules: [{ required: true, message: 'Please choose the dateTime' }],
+                  },
+                ]"
+                style="width: 100%"
+                :get-popup-container="trigger => trigger.parentNode"
+                placeholder="Start date"
+              />
+            </a-col>
+            <a-col :span="12">
+              <a-date-picker
+                v-decorator="[
+                  'dateTime',
+                  {
+                    rules: [{ required: true, message: 'Please choose the dateTime' }],
+                  },
+                ]"
+                style="width: 100%"
+                :get-popup-container="trigger => trigger.parentNode"
+                placeholder="End date"
+              />
+            </a-col>
+          </a-form-item>
+        </a-row>
+        <a-row :gutter="16">
+          <a-form-item label="Description">
+            <a-textarea
+              v-decorator="[
+                'description',
+                {
+                  rules: [{ required: true, message: 'Please enter url description' }],
+                },
+              ]"
+              :rows="4"
+              placeholder="Task description"
+            />
+          </a-form-item>
+        </a-row>
+      </a-form>
+      <div
+        :style="{
+          position: 'absolute',
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          borderTop: '1px solid #e9e9e9',
+          padding: '10px 16px',
+          background: '#fff',
+          textAlign: 'right',
+          zIndex: 1,
+        }"
+      >
+        <a-button :style="{ marginRight: '8px' }" @click="onClose">
+          Cancel
+        </a-button>
+        <a-button type="primary" @click="onClose">
+          Submit
+        </a-button>
+      </div>
+    </a-drawer>
+    <!-- end drawer -->
     <BarRouter />
   </div>
 </template>
@@ -165,19 +315,24 @@ export default {
     return {
       project: store.state.projects.find(p => p.id === projectId),
       members: store.state.members,
+      form: this.$form.createForm(this),
+      visible: false,
     }
   },
-  computed: {
-    projectFunc() {
-      return this.$store.getters.project(parseInt(this.$route.params.id))
-    },
-  },
+
   methods: {
     showDrawer() {
       this.visible = true
+      console.log(this.visible)
     },
     onClose() {
       this.visible = false
+    },
+  },
+
+  computed: {
+    projectFunc() {
+      return this.$store.getters.project(parseInt(this.$route.params.id))
     },
   },
 }

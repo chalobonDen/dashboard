@@ -17,11 +17,6 @@ Vue.use(MdTabs)
 
 const routes = [
   {
-    path: '/projects/:id',
-    name: 'project',
-    component: () => import(/* webpackChunkName: "about" */ '../views/project.vue'),
-  },
-  {
     path: '/home',
     name: 'Home',
     component: Home,
@@ -51,6 +46,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/projects.vue'),
   },
   {
+    path: '/projects/:id',
+    name: 'project',
+    component: () => import(/* webpackChunkName: "about" */ '../views/project.vue'),
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/login.vue'),
@@ -78,6 +78,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/members.vue'),
+  },
+  {
+    path: '/members/:id',
+    name: 'profileMember',
+    component: () => import(/* webpackChunkName: "about" */ '../views/profileMember.vue'),
   },
   {
     path: '/profile',

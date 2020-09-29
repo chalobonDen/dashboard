@@ -22,6 +22,15 @@
                   style="width: 50%"
                   @search="onSearch"
                 />
+
+                <!-- <a-input-search
+                  v-model="search"
+                  type="search"
+                  placeholder="search"
+                  style="width: 50%"
+                  enter-button
+                  @search="onSearch"
+                /> -->
               </td>
             </table>
             <!-- end search button -->
@@ -29,7 +38,7 @@
             <table style="width:100%;">
               <div v-for="member in memberFilter" :key="member.id">
                 <div class="listmembers" v-if="member.department === 'HR/Admin'">
-                  <md-card id="card">
+                  <v-card id="card" :to="{ name: 'profileMember', params: { id: member.id } }">
                     <td id="card-media">
                       <md-card-media>
                         <div id="circle">
@@ -39,20 +48,22 @@
                     </td>
                     <td id="information" align="left">
                       <div>
-                        <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
+                        <b id="displayname">{{ member.displayName }}</b>
                       </div>
-                      <div style="font-weight:500">{{ member.position }}</div>
+                      <div id="memberposition">
+                        {{ member.position }}
+                      </div>
                       <br />
-                      <div style="font-size:12px">
+                      <div id="department">
                         Full-time/Intern :
-                        <span style="font-weight:500;">{{ member.type }}</span>
+                        <span style="opacity: 0.75;">{{ member.type }}</span>
                       </div>
-                      <div style="font-size:12px">
+                      <div id="department">
                         Department:
-                        <span style="font-weight:500">{{ member.department }}</span>
+                        <span style="opacity: 0.75;">{{ member.department }}</span>
                       </div>
                     </td>
-                  </md-card>
+                  </v-card>
                 </div>
               </div>
             </table>
@@ -75,7 +86,7 @@
             <!-- end search button -->
             <div v-for="member in memberFilter" :key="member.id">
               <div class="listmembers" v-if="member.department === 'Development'">
-                <md-card id="card">
+                <v-card id="card" :to="{ name: 'profileMember', params: { id: member.id } }">
                   <td id="card-media">
                     <md-card-media>
                       <div id="circle">
@@ -85,20 +96,22 @@
                   </td>
                   <td id="information" align="left">
                     <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
+                      <b id="displayname">{{ member.displayName }}</b>
                     </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
+                    <div id="memberposition">
+                      {{ member.position }}
+                    </div>
                     <br />
-                    <div style="font-size:12px">
+                    <div id="department">
                       Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
+                      <span style="opacity: 0.75;">{{ member.type }}</span>
                     </div>
-                    <div style="font-size:12px">
+                    <div id="department">
                       Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
+                      <span style="opacity: 0.75;">{{ member.department }}</span>
                     </div>
                   </td>
-                </md-card>
+                </v-card>
               </div>
             </div>
           </a-tab-pane>
@@ -119,7 +132,7 @@
             <!-- end search button -->
             <div v-for="member in memberFilter" :key="member.id">
               <div class="listmembers" v-if="member.department === 'Design'">
-                <md-card id="card">
+                <v-card id="card" :to="{ name: 'profileMember', params: { id: member.id } }">
                   <td id="card-media">
                     <md-card-media>
                       <div id="circle">
@@ -129,20 +142,22 @@
                   </td>
                   <td id="information" align="left">
                     <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
+                      <b id="displayname">{{ member.displayName }}</b>
                     </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
+                    <div id="memberposition">
+                      {{ member.position }}
+                    </div>
                     <br />
-                    <div style="font-size:12px">
+                    <div id="department">
                       Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
+                      <span style="opacity: 0.75;">{{ member.type }}</span>
                     </div>
-                    <div style="font-size:12px">
+                    <div id="department">
                       Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
+                      <span style="opacity: 0.75;">{{ member.department }}</span>
                     </div>
                   </td>
-                </md-card>
+                </v-card>
                 <!-- <br />
                 <br />-->
               </div>
@@ -165,7 +180,7 @@
             <!-- end search button -->
             <div v-for="member in memberFilter" :key="member.id">
               <div class="listmembers" v-if="member.department === 'Marketing'">
-                <md-card id="card">
+                <v-card id="card" :to="{ name: 'profileMember', params: { id: member.id } }">
                   <td id="card-media">
                     <md-card-media>
                       <div id="circle">
@@ -175,20 +190,20 @@
                   </td>
                   <td id="information" align="left">
                     <div>
-                      <b style="color:#0036C7; font-size:18px">{{ member.displayName }}</b>
+                      <b id="displayname">{{ member.displayName }}</b>
                     </div>
-                    <div style="font-weight:500">{{ member.position }}</div>
+                    <div id="memberposition">{{ member.position }}</div>
                     <br />
-                    <div style="font-size:12px">
+                    <div id="department">
                       Full-time/Intern :
-                      <span style="font-weight:500;">{{ member.type }}</span>
+                      <span style="opacity: 0.75;">{{ member.type }}</span>
                     </div>
-                    <div style="font-size:12px">
+                    <div id="department">
                       Department:
-                      <span style="font-weight:500">{{ member.department }}</span>
+                      <span style="opacity: 0.75;">{{ member.department }}</span>
                     </div>
                   </td>
-                </md-card>
+                </v-card>
                 <!-- <br />
                 <br />-->
               </div>
@@ -316,5 +331,21 @@ button {
   -moz-border-radius: 70px;
   -webkit-border-radius: 70px;
   border-radius: 70px;
+}
+#displayname {
+  color: #0036c7;
+  font-size: 18px;
+}
+#memberposition {
+  color: #000000;
+  opacity: 0.85;
+  font-weight: 500;
+}
+#department {
+  color: #000000;
+  opacity: 0.85;
+  font-size: 12px;
+}
+#des {
 }
 </style>

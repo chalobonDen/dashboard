@@ -168,6 +168,14 @@ export default new Vuex.Store({
         description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
         status: 'WIP',
         urlProject: 'https://cdn.auth0.com/blog/illustrations/vuejs.png',
+        date: [
+          {
+            id: 1,
+            day: 1,
+            month: 'May',
+            year: 2020,
+          },
+        ],
         tasks: [
           {
             tasksId: 1,
@@ -196,9 +204,28 @@ export default new Vuex.Store({
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
         date: [
           {
-            day: 1,
+            id: 1,
+            day: 2,
             month: 'Sep',
             year: 2020,
+          },
+        ],
+        tasks: [
+          {
+            tasksId: 1,
+            taskName: 'Design',
+            taskTime: '11.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'WIP',
+          },
+          {
+            tasksId: 2,
+            taskName: 'Coding',
+            taskTime: '13.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'Done',
           },
         ],
       },
@@ -211,9 +238,28 @@ export default new Vuex.Store({
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
         date: [
           {
-            day: 1,
-            month: 'Sep',
+            id: 1,
+            day: 3,
+            month: 'Nov',
             year: 2020,
+          },
+        ],
+        tasks: [
+          {
+            tasksId: 1,
+            taskName: 'Get Requirement form customer',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'WIP',
+          },
+          {
+            tasksId: 2,
+            taskName: 'Meeting',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'Done',
           },
         ],
       },
@@ -226,9 +272,28 @@ export default new Vuex.Store({
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
         date: [
           {
-            day: 1,
-            month: 'Sep',
+            id: 1,
+            day: 4,
+            month: 'Aug',
             year: 2020,
+          },
+        ],
+        tasks: [
+          {
+            tasksId: 1,
+            taskName: 'Test Project',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'WIP',
+          },
+          {
+            tasksId: 2,
+            taskName: 'Implement code',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'Done',
           },
         ],
       },
@@ -287,13 +352,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    // getPicProfile(state) {
-    //   return state.profile.pictureUrl
-    // },
     projects: state => {
       return state.projects
     },
-
     project: state => id => {
       return state.projects.find(project => project.id === id)
     },

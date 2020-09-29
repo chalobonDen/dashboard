@@ -38,7 +38,7 @@
         :key="list.id"
         :to="{ name: 'project', params: { id: list.id } }"
       >
-        <div :to="{ name: 'project', params: { id: list.id } }">
+        <div>
           <table>
             <td align="left" style="width:75% ">
               <md-card-header id="title">
