@@ -30,13 +30,23 @@
       </table>
     </div>
     <div class="listProject">
-      <md-card id="card" align="left" v-for="list in searchFilter" :key="list.id">
-        <div>
+      <v-card
+        style="text-decoration:none; color:black"
+        id="card"
+        align="left"
+        v-for="list in searchFilter"
+        :key="list.id"
+        :to="{ name: 'project', params: { id: list.id } }"
+      >
+        <div :to="{ name: 'project', params: { id: list.id } }">
           <table>
             <td align="left" style="width:75% ">
               <md-card-header id="title">
                 <div class="md-title">
-                  <b style="line-height: 0px;">{{ list.name }}</b>
+                  <b style="line-height: 0px;">
+                    <!-- <router-link :to="`/project/${list.id}`">{{ list.name }}</router-link> -->
+                    {{ list.name }}
+                  </b>
                 </div>
               </md-card-header>
               <md-card-content id="position">{{ list.position }}</md-card-content>
@@ -89,7 +99,7 @@
             </table>
           </md-card-content>
         </div>
-      </md-card>
+      </v-card>
     </div>
     <div style="padding-bottom:90px">
       <!-- ระยะห่าง manu ข้างล่างกับ content -->
@@ -104,7 +114,7 @@ export default {
   data() {
     return {
       search: '',
-      lists: store.state.lists,
+      projects: store.state.projects,
       members: store.state.members,
       currentFilter: '',
     }
@@ -114,7 +124,7 @@ export default {
       let text = this.search.trim()
       let filterStatus = this.currentFilter.trim()
 
-      return this.lists.filter(item => {
+      return this.projects.filter(item => {
         let filtered = true
         if (filterStatus && filterStatus.length > 0) {
           filtered = item.status == filterStatus
@@ -136,6 +146,11 @@ export default {
     //   })
     // },
   },
+  // methods: {
+  //   viewProject(projectid) {
+  //     this.$router.push({ name: 'project', params: { id: list.id } })
+  //   },
+  // },
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div style="position: fixed; z-index:2; width:100%">
+  <div style="position: fixed; z-index:10; width:100%">
     <md-toolbar class="toolbar" md-elevation="1">
       <table style="border:none; width:100% ">
         <tr>

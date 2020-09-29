@@ -5,7 +5,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  fixed; z-index:1;"
+  fixed; z-index:10;"
   >
     <md-bottom-bar md-sync-route>
       <md-bottom-bar-item style="min-width: 10px;" to="/">
@@ -15,7 +15,7 @@
         </div>
       </md-bottom-bar-item>
 
-      <md-bottom-bar-item style="min-width: 10px;" to="/project">
+      <md-bottom-bar-item style="min-width: 10px;" to="/projects">
         <div style="margin-top:10px">
           <a-icon type="fund" id="projectIcon" />
           <div id="project">Projects</div>

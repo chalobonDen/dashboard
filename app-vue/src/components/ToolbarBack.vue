@@ -5,7 +5,10 @@
         <tr>
           <td align="left">
             <!-- style="width:30%" -->
-            <a-icon type="left" />
+            <md-button @click="goBack()" style="width: 20px;">
+              <a-icon type="left" style="color:white;" />
+            </md-button>
+
             <!-- style="width:18%;" -->
           </td>
 
@@ -37,6 +40,10 @@ export default {
     ...mapState({
       profileStore: store => store.profile,
     }),
+
+    goBack() {
+      window.history.back()
+    },
   },
   // async mounted() {
   //   await liff.init({ liffId: '1654900324-lDYAE146' })

@@ -44,12 +44,14 @@ export default {
         {
           tasksId: 1,
           taskName: 'Design ui',
+          taskTime: '10.00 AM',
           descriptonTask:
             'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
         },
         {
           tasksId: 2,
           taskName: 'Implement code',
+          taskTime: '10.00 AM',
           descriptonTask:
             'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
         },

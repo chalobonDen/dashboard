@@ -160,7 +160,7 @@ export default new Vuex.Store({
         type: 'Full-time',
       },
     ],
-    lists: [
+    projects: [
       {
         id: 1,
         name: 'Project #1',
@@ -168,6 +168,24 @@ export default new Vuex.Store({
         description: 'Commodo adipiscing ornare sit lorem sit tempus urna, vestibulum, neque.',
         status: 'WIP',
         urlProject: 'https://cdn.auth0.com/blog/illustrations/vuejs.png',
+        tasks: [
+          {
+            tasksId: 1,
+            taskName: 'Design ui',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'WIP',
+          },
+          {
+            tasksId: 2,
+            taskName: 'Implement code',
+            taskTime: '10.00 AM',
+            descriptonTask:
+              'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+            status: 'Done',
+          },
+        ],
       },
       {
         id: 2,
@@ -176,6 +194,13 @@ export default new Vuex.Store({
         description: 'The Dashboard that show the flow of work in the project.',
         status: 'WIP',
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
+        date: [
+          {
+            day: 1,
+            month: 'Sep',
+            year: 2020,
+          },
+        ],
       },
       {
         id: 3,
@@ -184,6 +209,13 @@ export default new Vuex.Store({
         description: 'Contrary to popular belief, Lorem Ipsum is not simply random text.',
         status: 'Done',
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
+        date: [
+          {
+            day: 1,
+            month: 'Sep',
+            year: 2020,
+          },
+        ],
       },
       {
         id: 4,
@@ -192,6 +224,13 @@ export default new Vuex.Store({
         description: 'Consequat tempus nisi, orci, ligula duis.',
         status: 'Done',
         urlProject: 'https://prongbang.github.io/assets/images/react/2.png',
+        date: [
+          {
+            day: 1,
+            month: 'Sep',
+            year: 2020,
+          },
+        ],
       },
     ],
     news: [
@@ -251,6 +290,13 @@ export default new Vuex.Store({
     // getPicProfile(state) {
     //   return state.profile.pictureUrl
     // },
+    projects: state => {
+      return state.projects
+    },
+
+    project: state => id => {
+      return state.projects.find(project => project.id === id)
+    },
   },
   actions: {
     showPicProfile(context) {

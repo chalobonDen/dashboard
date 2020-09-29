@@ -17,6 +17,11 @@ Vue.use(MdTabs)
 
 const routes = [
   {
+    path: '/projects/:id',
+    name: 'project',
+    component: () => import(/* webpackChunkName: "about" */ '../views/project.vue'),
+  },
+  {
     path: '/home',
     name: 'Home',
     component: Home,
@@ -38,12 +43,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/news.vue'),
   },
   {
-    path: '/project',
-    name: 'project',
+    path: '/projects/',
+    name: 'projectPage',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/project.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/projects.vue'),
   },
   {
     path: '/login',

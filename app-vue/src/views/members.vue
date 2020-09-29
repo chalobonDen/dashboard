@@ -269,8 +269,8 @@ button {
 .listmembers {
   margin: 0px 18px 0px 18px;
   background-color: #e9f0ff;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 15px;
   padding-bottom: 5px; /* ระยะห่างระหว่าง card */
 }
@@ -281,6 +281,8 @@ button {
   box-shadow: 1.5px 1.5px 5px #b1b1b1;
   margin-bottom: 0px; /* ระยะห่างระหว่าง card */
   margin-top: 3px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 #card-media {
   background-color: #9daace;
