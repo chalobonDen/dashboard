@@ -344,7 +344,7 @@ export default new Vuex.Store({
         taskTime: '10.00 AM',
         descriptonTask:
           'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
-        status: 'WIP',
+        status: false,
       },
       {
         tasksId: 2,
@@ -353,7 +353,7 @@ export default new Vuex.Store({
         taskTime: '10.00 AM',
         descriptonTask:
           'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
-        status: 'Done',
+        status: true,
       },
       {
         tasksId: 3,
@@ -362,7 +362,7 @@ export default new Vuex.Store({
         taskTime: '11.00 AM',
         descriptonTask:
           'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
-        status: 'WIP',
+        status: false,
       },
       {
         tasksId: 4,
@@ -371,7 +371,7 @@ export default new Vuex.Store({
         taskTime: '13.00 AM',
         descriptonTask:
           'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
-        status: 'Done',
+        status: true,
       },
     ],
 

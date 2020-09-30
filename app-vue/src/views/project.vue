@@ -97,7 +97,7 @@
                 <md-chip
                   class="md-accent"
                   md-clickable
-                  v-if="task.status == 'WIP'"
+                  v-if="task.status == false"
                   style="background-color:#F77B72; color:black; font-size: 11px; width:60.27px; text-align:center; font-weight:500;"
                 >
                   <span
@@ -106,10 +106,10 @@
                     data-inline="false"
                     data-icon="carbon:warning"
                   ></span>
-                  {{ task.status }}
+                  WIP
                 </md-chip>
                 <md-chip
-                  v-if="task.status == 'Done'"
+                  v-if="task.status == true"
                   style="background-color:#4DD987; color:black; font-size: 11px; font-weight:500;"
                 >
                   <span
@@ -118,7 +118,7 @@
                     data-inline="false"
                     data-icon="octicon:check-circle-24"
                   ></span>
-                  {{ task.status }}
+                  Done
                 </md-chip>
               </v-col>
             </v-row>
