@@ -125,7 +125,7 @@
 
     <!-- Clipboard -->
     <v-row style="margin-left:6px; margin-right:6px; margin-top:12px">
-      <v-col>
+      <v-col style="padding-bottom: 0px;">
         <span
           class="iconify"
           data-inline="false"
@@ -134,7 +134,7 @@
         ></span>
         <b style="float: left; font-size:16px">Clipboard</b>
       </v-col>
-      <v-col>
+      <!-- <v-col>
         <v-btn
           @click="onFileChange()"
           color="primary"
@@ -148,7 +148,7 @@
           ></span>
           Upload
         </v-btn>
-      </v-col>
+      </v-col> -->
     </v-row>
 
     <!-- upload file -->
