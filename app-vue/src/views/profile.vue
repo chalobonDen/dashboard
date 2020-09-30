@@ -1,37 +1,32 @@
 <template>
   <div class="project">
     <Toolbar />
-
-    <md-content>
-      <br />
-      <br />
-      <br />
-      <br />
-    </md-content>
-    <Profile />
-
-    <div>
-      <a-tabs default-active-key="1" @change="callback">
-        <a-tab-pane key="1" tab="Project">
-          <div>
-            <table style="width:100%; margin-bottom:10px">
-              <div style="margin-left:18px">
-                <td align="left" style="font-size:20px; font-weight:550">Project</td>
-              </div>
-            </table>
-          </div>
-          <ListProject />
-        </a-tab-pane>
-        <a-tab-pane key="2" tab="Tasks" force-render>
-          <div
-            align="left"
-            style="margin-bottom:10px; margin-left:18px; font-weight:550; font-size:20px;"
-          >
-            Today's tasks
-          </div>
-          <Tasks />
-        </a-tab-pane>
-      </a-tabs>
+    <br />
+    <div style="margin-top:60px">
+      <Profile />
+      <div>
+        <a-tabs default-active-key="1" @change="callback">
+          <a-tab-pane key="1" tab="Project">
+            <div>
+              <table style="width:100%; margin-bottom:10px">
+                <div style="margin-left:18px">
+                  <td align="left" style="font-size:20px; font-weight:550">Project</td>
+                </div>
+              </table>
+            </div>
+            <ListProject />
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="Tasks" force-render>
+            <div
+              align="left"
+              style="margin-bottom:10px; margin-left:18px; font-weight:550; font-size:20px;"
+            >
+              Today's tasks
+            </div>
+            <Tasks />
+          </a-tab-pane>
+        </a-tabs>
+      </div>
     </div>
 
     <!-- <div style="margin-top:20px;">

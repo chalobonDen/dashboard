@@ -1,48 +1,5 @@
 <template>
   <div style="border:none; width:100%">
-    <!-- <table style="margin:0px 18px 0px 18px">
-      <tr type="flex" justify="space-around" align="middle">
-        <td>
-          <img
-            class="profile"
-            id="pictureUrl"
-            :src="
-              profileStore.pictureUrl ||
-                'https://www.iconfinder.com/data/icons/facebook-51/32/FACEBOOK_LINE-01-512.png'
-            "
-          />
-        </td>
-        <td>
-          <tr>
-            1
-          </tr>
-          <tr>
-            Project
-          </tr>
-        </td>
-
-        <td>
-          <tr>
-            2
-          </tr>
-          <tr>
-            Participants
-          </tr>
-        </td>
-
-        <td>
-          <tr>
-            2
-          </tr>
-          <tr>
-            Today’s task
-          </tr>
-        </td>
-      </tr>
-      <tr></tr>
-      <tr></tr>
-    </table> -->
-
     <div style="margin:0px 18px 0px 18px">
       <!-- ระยะห่างด้านข้าง margin:0px 18px 0px 18px -->
       <a-row
@@ -103,15 +60,6 @@
             style="text-transform: capitalize; background-color: #105EFB;"
             >Edit profile</v-btn
           >
-
-          <!-- <a-button
-            type="primary"
-            class="md-raised md-primary"
-            style="width:100%; text-transform: capitalize;"
-            to="/editprofile"
-          >
-            Edit profile
-          </a-button> -->
         </a-col>
       </a-row>
       <hr style="color:#a3a3a3; weight:550; margin-bottom:20px" />

@@ -336,6 +336,135 @@ export default new Vuex.Store({
         status: 'Important',
       },
     ],
+    tasks: [
+      {
+        tasksId: 1,
+        projectId: 1,
+        taskName: 'Design ui',
+        taskTime: '10.00 AM',
+        descriptonTask:
+          'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+        status: 'WIP',
+      },
+      {
+        tasksId: 2,
+        projectId: 1,
+        taskName: 'Implement code',
+        taskTime: '10.00 AM',
+        descriptonTask:
+          'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+        status: 'Done',
+      },
+      {
+        tasksId: 3,
+        projectId: 2,
+        taskName: 'Design',
+        taskTime: '11.00 AM',
+        descriptonTask:
+          'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+        status: 'WIP',
+      },
+      {
+        tasksId: 4,
+        projectId: 2,
+        taskName: 'Coding',
+        taskTime: '13.00 AM',
+        descriptonTask:
+          'If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill..',
+        status: 'Done',
+      },
+    ],
+
+    // new mock data
+    Project: [
+      {
+        id: 1,
+        projectName: 'Project#1',
+        projectType: '',
+        projectDetail: '',
+        projectImage: '',
+        status: '',
+      },
+    ],
+    Task: [
+      {
+        id: 1,
+        projectId: 1,
+        taskName: '',
+        startTime: '',
+        endTime: '',
+        taskDetail: '',
+        isDone: false,
+      },
+    ],
+    ProjectOnUser: [
+      {
+        userId: 1,
+        projectId: 1,
+      },
+    ],
+    User: [
+      {
+        id: 1,
+        email: '',
+        name: '',
+        image: '',
+        position: '',
+        skills: '',
+        contactId: 1,
+        role: '',
+      },
+    ],
+    Contact: [
+      {
+        id: '1',
+        facebook: '',
+        twitter: '',
+        instagram: '',
+        gitlab: '',
+        github: '',
+      },
+    ],
+    Comment: [
+      {
+        id: 1,
+        timestamp: '',
+        image: '',
+        message: '',
+      },
+    ],
+    File: [
+      {
+        id: 1,
+        url: '',
+        name: '',
+        status: '',
+      },
+    ],
+    FileOnTask: [
+      {
+        taskId: 1,
+        fileId: 1,
+      },
+    ],
+    CommentOnTask: [
+      {
+        taskId: 1,
+        commentId: 1,
+      },
+    ],
+    TaskOnUser: [
+      {
+        userId: 1,
+        taskId: 1,
+      },
+    ],
+    CommentOnUser: [
+      {
+        userId: 1,
+        commentId: 1,
+      },
+    ],
   },
   mutations: {
     setPicProfile(state, value) {
@@ -357,6 +486,13 @@ export default new Vuex.Store({
     },
     project: state => id => {
       return state.projects.find(project => project.id === id)
+    },
+
+    tasks: state => {
+      return state.tasks
+    },
+    task: state => id => {
+      return state.tasks.find(task => task.tasksId === id)
     },
   },
   actions: {

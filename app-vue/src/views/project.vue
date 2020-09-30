@@ -45,6 +45,7 @@
       </v-col>
     </v-row>
 
+    <!-- Date -->
     <v-row style="margin-left:6px; margin-right:6px;">
       <v-col v-if="project">
         <v-card v-for="date in project.date" :key="date.id">
@@ -58,8 +59,8 @@
     </v-row>
 
     <!-- Tasks -->
-    <div style="margin-left:18px; margin-right:18px;">
-      <v-row>
+    <div>
+      <v-row style="margin-left:6px; margin-right:6px;">
         <v-col><span style="float:left; font-size:20px; font-weight:550">Task</span></v-col>
         <v-col>
           <v-btn
@@ -70,13 +71,12 @@
           >
         </v-col>
       </v-row>
-      <div v-if="project">
-        <!-- check ว่า มี project มั้ย -->
+      <div v-for="task in tasksFunc" :key="task.tasksId" style="margin-left:6px; margin-right:6px;">
         <v-card
+          id="card"
           align="left"
-          style="padding:10px 10px 10px 10px; margin-bottom: 20px"
-          v-for="task in project.tasks"
-          :key="task.tasksId"
+          v-if="projectFunc.id == task.projectId"
+          :to="{ name: 'taskDetail', params: { id: task.tasksId } }"
         >
           <div style="padding-left:15px">
             <v-row>
@@ -142,7 +142,6 @@
             </v-row>
           </div>
         </v-card>
-        <!-- </div> -->
       </div>
     </div>
     <div style="padding-bottom:90px">
@@ -315,6 +314,7 @@ export default {
     return {
       project: store.state.projects.find(p => p.id === projectId),
       members: store.state.members,
+      task: store.state.tasks,
       form: this.$form.createForm(this),
       visible: false,
     }
@@ -333,6 +333,9 @@ export default {
   computed: {
     projectFunc() {
       return this.$store.getters.project(parseInt(this.$route.params.id))
+    },
+    tasksFunc() {
+      return this.$store.getters.tasks
     },
   },
 }
@@ -355,16 +358,13 @@ div {
   margin-top: 0px;
   padding-bottom: 0px;
 }
-.listTask {
-  margin: 0px 18px 0px 18px;
-  background-color: #e9f0ff;
-  padding-top: 15px;
-  padding-bottom: 2px;
-  font-family: 'Roboto';
-}
 #card {
   margin: 3px 15px 24px 15px; /* ระยะห่างรอบๆ card */
   border-radius: 5px;
+  padding: 10px 12px 10px 12px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: black;
 }
 
 #status {
