@@ -65,6 +65,7 @@
                     data-icon="bi:bookmark"
                     style="font-size: 14px;"
                   ></span>
+
                   {{ data.status }}
                 </md-chip>
               </td>

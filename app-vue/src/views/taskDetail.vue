@@ -174,10 +174,85 @@
       </v-row>
     </div>
 
-    <div style="padding-bottom:80px">
-      <!-- ระยะห่าง manu ข้างล่างกับ content -->
+    <!-- Comment -->
+    <v-row style="margin-left:6px; margin-right:6px; margin-top:12px">
+      <v-col>
+        <span
+          class="iconify"
+          data-inline="false"
+          data-icon="ant-design:message-outlined"
+          style="color: #105efb; font-size: 22px; float:left"
+        ></span>
+        <b style="float: left; font-size:16px">Comment</b>
+      </v-col>
+    </v-row>
+    <v-row style="margin-left:6px; margin-right:6px; margin-top:12px">
+      <div style="width:100%; margin-left:12px; margin-right:12px">
+        <v-row v-for="comment in comments" :key="comment.id">
+          <v-col cols="2">
+            <span
+              class="iconify"
+              data-inline="false"
+              data-icon="carbon:user-avatar-filled-alt"
+              style="color: #8f8f8f; font-size: 40px;"
+            ></span>
+          </v-col>
+
+          <v-col cols="10" style="padding-left: 0px;">
+            <v-card style="">
+              <v-row style="margin:5px 5px 0 5px">
+                <v-col style="width:80%">
+                  <v-row>
+                    <span style="float:left; margin-right:8px; font-weight:550">{{
+                      comment.name
+                    }}</span>
+                    <span style="float:left; color:#8F8F8F;">{{ comment.dateTime }}</span>
+                  </v-row>
+                </v-col>
+                <v-col style="width:20%"
+                  ><span
+                    class="iconify"
+                    data-inline="false"
+                    data-icon="bi:three-dots-vertical"
+                    style="color: #8f8f8f; font-size: 10px; float:right"
+                  ></span
+                ></v-col>
+              </v-row>
+              <v-row>
+                <v-col style="padding-top: 0px;">
+                  <span style="float:left; padding-left: 25px;">{{ comment.comment }}</span>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
+    </v-row>
+
+    <!-- input comment -->
+    <div style="background-color:#E9F0FF">
+      <v-row>
+        <v-col cols="2">
+          <span
+            class="iconify"
+            data-inline="false"
+            data-icon="carbon:user-avatar-filled-alt"
+            style="color: #8f8f8f; font-size: 30px;"
+          ></span>
+        </v-col>
+        <v-col cols="8">
+          <a-input placeholder="Say something" v-model="newComment" />
+        </v-col>
+        <v-col cols="2" @click="addComment()">
+          <span
+            class="iconify"
+            data-inline="false"
+            data-icon="cil:send"
+            style="color: #0036c7; font-size: 20px;"
+          ></span>
+        </v-col>
+      </v-row>
     </div>
-    <BarRouter />
   </div>
 </template>
 
@@ -192,13 +267,11 @@ function getBase64(file) {
   })
 }
 import ToolbarBack from '@/components/ToolbarBack.vue'
-import BarRouter from '@/components/BarRouter.vue'
 import store from '../store/index.js'
 export default {
   name: 'taskDetail',
   components: {
     ToolbarBack,
-    BarRouter,
   },
   data() {
     return {
@@ -239,6 +312,19 @@ export default {
           status: 'error',
         },
       ],
+
+      // add comment
+      newComment: '',
+      idForComment: 2,
+      comments: [
+        {
+          id: 1,
+          name: 'Pupaeng',
+          comment: 'สวัสดีค่ะ',
+          dateTime: '10.00 AM',
+          profileUrl: 'https://ca.slack-edge.com/T03EKL88Y-U016J08FAUC-eab33b9cc74f-512',
+        },
+      ],
     }
   },
   computed: {
@@ -271,6 +357,23 @@ export default {
     },
     handleChange({ fileList }) {
       this.fileList = fileList
+    },
+
+    // add comment
+    addComment() {
+      console.log('test add comment')
+
+      this.comments.push({
+        id: this.idForComment,
+        name: 'Pupaeng',
+        comment: this.newComment,
+        dateTime: '10.10 AM',
+        profileUrl: 'https://ca.slack-edge.com/T03EKL88Y-U016J08FAUC-eab33b9cc74f-512',
+      })
+
+      this.newComment = ''
+      this.idForComment++
+      console.log(this.comments)
     },
   },
 }
